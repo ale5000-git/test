@@ -14,8 +14,11 @@ addons:
     packages:
       #- android-tools-adb
       - p7zip-full
-      - zipalign
+      #- zipalign
 
+before_install:
+  #- sudo apt-get -qq update
+  - sudo apt-get install -y zipalign
 install: true
 
 script:
