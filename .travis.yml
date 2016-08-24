@@ -1,0 +1,24 @@
+sudo: false
+language: python
+python:
+  - "2.0"
+  - "2.5"
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "pypy"
+env:
+  - RUN_TYPE=dumb
+addons:
+  apt:
+    packages:
+      - adb
+      - p7zip-full
+
+install: true
+
+script:
+  - nosetests
+  - python test.py
