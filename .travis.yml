@@ -12,7 +12,7 @@ env:
 addons:
   apt:
     packages:
-      - adb
+      - android-tools-adb
       - p7zip-full
 
 install: true
