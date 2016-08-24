@@ -12,8 +12,9 @@ env:
 addons:
   apt:
     packages:
-      - android-tools-adb
+      #- android-tools-adb
       - p7zip-full
+      - zipalign
 
 install: true
 
