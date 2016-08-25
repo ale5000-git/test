@@ -21,7 +21,7 @@ addons:
       #- p7zip-full
       #- zipalign
 
-install: true
+install: ./.travis/install.sh
 
 script:
   #- nosetests
