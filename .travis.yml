@@ -9,6 +9,7 @@ matrix:
     - os: linux
       python: pypy
     - os: osx
+      osx_image: xcode7.2
       language: generic
   allow_failures:
     - os: osx
@@ -21,7 +22,7 @@ addons:
       #- p7zip-full
       #- zipalign
 
-install: ./.travis/install.sh
+install: .travis/install.sh
 
 script:
   #- nosetests
