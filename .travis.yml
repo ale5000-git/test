@@ -1,28 +1,30 @@
 sudo: false
 language: python
+
 matrix:
   include:
     - os: linux
-      python: 2.6
-    - os: linux
-      python: 3.4
-    - os: linux
-      python: pypy
+      python:
+        #- "2.6"
+        - "3.4"
+        - "pypy"
     - os: osx
-      osx_image: xcode7.2
       language: generic
   allow_failures:
     - os: osx
 env:
   - RUN_TYPE=dumb
-addons:
-  apt:
-    packages:
+#addons:
+  #apt:
+    #packages:
       #- android-tools-adb
       #- p7zip-full
       #- zipalign
 
-install: .travis/install.sh
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python; fi
+
+install: true
 
 script:
   #- nosetests
