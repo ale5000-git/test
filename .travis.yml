@@ -3,22 +3,23 @@ language: python
 
 matrix:
   include:
+    #- os: linux
+      #python: "2.6"
     - os: linux
-      python:
-        #- "2.6"
-        - "3.4"
-        - "pypy"
+      python: "3.4"
+    - os: linux
+      python: "pypy"
     - os: osx
       language: generic
   allow_failures:
     - os: osx
 env:
   - RUN_TYPE=dumb
-#addons:
-  #apt:
-    #packages:
+addons:
+  apt:
+    packages:
       #- android-tools-adb
-      #- p7zip-full
+      - p7zip-full
       #- zipalign
 
 before_install:
