@@ -19,10 +19,11 @@ addons:
   apt:
     packages:
       #- android-tools-adb
-      - p7zip-full
+      #- p7zip-full
       #- zipalign
 
 before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python; fi
 
 install: true
