@@ -10,9 +10,9 @@ matrix:
     - os: linux
       python: "pypy"
     - os: osx
+      language: generic
   allow_failures:
     - os: osx
-    - language: generic
 
 addons:
   apt:
