@@ -12,7 +12,6 @@ def initialize():
             if getattr(self, "stdout", False) == False: self.stdout = output;
             self.returncode += 1;###########
             self.stderr = stderr;
-    subprocess.ExtendedCalledProcessError = ExtendedCalledProcessError;
 
 #if "check_output" not in dir(subprocess):
     def check_output(*popenargs, **kwargs):
@@ -27,7 +26,7 @@ def initialize():
             cmd = kwargs.get("args");
             if cmd is None:
                 cmd = popenargs[0];
-            raise subprocess.CalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data, stderr=None);
+            raise ExtendedCalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data, stderr=None);
         return stdout_data;
     subprocess.check_output2 = check_output;
 
