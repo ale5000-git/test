@@ -10,7 +10,6 @@ matrix:
     - os: linux
       python: "pypy"
     - os: osx
-      python: "2.7"
   allow_failures:
     - os: osx
 
