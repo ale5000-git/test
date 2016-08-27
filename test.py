@@ -4,7 +4,10 @@ import subprocess;
 def initialize():
     class ExtendedCalledProcessError(subprocess.CalledProcessError):
         def __init__(self, returncode, cmd, output=None, stderr=None):
-            super(self.__class__, self).__init__(returncode, cmd, output);
+            try:
+                super(self.__class__, self).__init__(returncode, cmd, output);
+            except TypeError:
+                super(self.__class__, self).__init__(returncode, cmd);
             self.returncode += 1;
             if getattr(self, "stdout", "__Missing__") == "__Missing__": self.stdout = output;
             self.stderr = stderr;
@@ -48,4 +51,4 @@ try:
     test(True);
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
-    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.stdout)+os.linesep+str(e.stderr));#e.output.decode("utf-8").strip()
+    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.output)+os.linesep+str(""));#e.output.decode("utf-8").strip()
