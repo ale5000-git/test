@@ -4,7 +4,7 @@ import subprocess;
 def initialize():
     class ExtendedCalledProcessError(subprocess.CalledProcessError):
         def __init__(self, returncode, cmd, output=None, stderr=None):
-            super(self.__class__, self).__init__(returncode, cmd, output, stderr);
+            super(self.__class__, self).__init__(returncode, cmd, output);
             self.returncode += 1;
             #self.returncode = returncode;
             #self.cmd = cmd;
