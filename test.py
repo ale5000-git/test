@@ -6,7 +6,8 @@ def initialize():
         def __init__(self, returncode, cmd, output=None, stderr=None):
             super(self.__class__, self).__init__(returncode, cmd, output);
             self.returncode += 1;
-            if getattr(self, "stdout", "__Missing__") == "__Missing__": self.stdout = self.output;
+            if getattr(self, "stdout", "__Missing__") == "__Missing__": self.stdout = output;
+            self.stderr = stderr;
     subprocess.ExtendedCalledProcessError = ExtendedCalledProcessError;
 
 #if "check_output" not in dir(subprocess):
