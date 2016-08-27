@@ -12,6 +12,7 @@ matrix:
     - os: osx
   allow_failures:
     - os: osx
+    - language: generic
 
 addons:
   apt:
@@ -22,9 +23,6 @@ addons:
 
 env:
   - RUN_TYPE=dumb
-
-#before_install:
-  #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi;
 
 install: true
 
