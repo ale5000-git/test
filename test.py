@@ -39,15 +39,15 @@ def test(one = True):
 
 
 try:
-    test(False);
-except subprocess.CalledProcessError as e:
-    print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
-    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.stdout)+os.linesep+str(e.stderr));#e.output.decode("utf-8").strip()
-
-print(os.linesep+os.linesep+os.linesep);
-
-try:
     test(True);
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.stdout)+os.linesep+str(e.stderr));
+
+print(os.linesep+os.linesep+os.linesep);
+
+try:
+    test(False);
+except subprocess.CalledProcessError as e:
+    print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
+    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.stdout)+os.linesep+str(e.stderr));#e.output.decode("utf-8").strip()
