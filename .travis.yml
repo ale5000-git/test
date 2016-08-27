@@ -9,6 +9,8 @@ matrix:
       python: "3.4"
     - os: linux
       python: "pypy"
+    - os: linux
+      python: "pypy3"
     - os: osx
       language: generic
   allow_failures:
@@ -24,9 +26,9 @@ addons:
 env:
   - RUN_TYPE=dumb
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi;
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install pyenv-virtualenv; fi;
+#before_install:
+  #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi;
+  #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install pyenv-virtualenv; fi;
 
 install: true
 
