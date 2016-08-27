@@ -13,14 +13,16 @@ matrix:
       language: generic
   allow_failures:
     - os: osx
-env:
-  - RUN_TYPE=dumb
+
 addons:
   apt:
     packages:
       #- android-tools-adb
       - p7zip-full
       #- zipalign
+
+env:
+  - RUN_TYPE=dumb
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi;
@@ -29,5 +31,4 @@ before_install:
 install: true
 
 script:
-  - nosetests
   - python test.py
