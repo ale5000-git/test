@@ -43,12 +43,12 @@ try:
     test(False);
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
-    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.stdout)+os.linesep+str(e.stderr));
+    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+"Out1: "+str(e.output).strip()+os.linesep+"Out2: "+str(e.stdout).strip()+os.linesep+"Err: "+str(e.stderr).strip());
 
 print(os.linesep+os.linesep+os.linesep);
 
 try:
-    test(True);
+    pass#test(True);
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
-    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.output)+os.linesep+str(""));#e.output.decode("utf-8").strip()
+    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.output).strip()+os.linesep+str(""));#e.output.decode("utf-8").strip()
