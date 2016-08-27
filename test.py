@@ -10,6 +10,7 @@ def initialize():
             #self.cmd = cmd;
             #self.stdout = self.output = output;
             #self.stderr = stderr;
+            #if getattr(self, "output", None) is None: print("dddddd");
     subprocess.ExtendedCalledProcessError = ExtendedCalledProcessError;
 
 #if "check_output" not in dir(subprocess):
@@ -25,7 +26,7 @@ def initialize():
             cmd = kwargs.get("args");
             if cmd is None:
                 cmd = popenargs[0];
-            raise subprocess.CalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data, stderr=None);
+            raise ExtendedCalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data, stderr=None);
         return stdout_data;
     subprocess.check_output2 = check_output;
 
@@ -39,7 +40,7 @@ def test(one = True):
 
 
 try:
-    test(True);
+    test(False);
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.stdout)+os.linesep+str(e.stderr));
@@ -47,7 +48,7 @@ except subprocess.CalledProcessError as e:
 print(os.linesep+os.linesep+os.linesep);
 
 try:
-    test(False);
+    test(True);
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+str(e.stdout)+os.linesep+str(e.stderr));#e.output.decode("utf-8").strip()
