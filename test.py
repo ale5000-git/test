@@ -8,8 +8,9 @@ def initialize():
                 super(self.__class__, self).__init__(returncode, cmd, output);
             except TypeError:
                 super(self.__class__, self).__init__(returncode, cmd);
-            self.returncode += 1;
-            if getattr(self, "stdout", "__Missing__") == "__Missing__": self.stdout = output;
+                self.output = output;
+            if getattr(self, "stdout", False) == False: self.stdout = output;
+            self.returncode += 1;###########
             self.stderr = stderr;
     subprocess.ExtendedCalledProcessError = ExtendedCalledProcessError;
 
@@ -26,7 +27,7 @@ def initialize():
             cmd = kwargs.get("args");
             if cmd is None:
                 cmd = popenargs[0];
-            raise ExtendedCalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data, stderr=None);
+            raise subprocess.CalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data, stderr=None);
         return stdout_data;
     subprocess.check_output2 = check_output;
 
