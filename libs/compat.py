@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
 # Compatibility layer
-def _get_sorted():
-    try:
-        return sorted;
-    except NameError:
+def fix_builtins():
+    import builtins;
+
+    if getattr(builtins, "sorted", None) is None:
         def _sorted(list):
             list.sort();
             return list;
-        return _sorted;
-sorted = _get_sorted();
+        builtins.sorted = _sorted;
 
 def fix_subprocess():
     import subprocess;
@@ -45,4 +44,5 @@ def fix_subprocess():
         subprocess.check_output = _check_output;
 
 def fix_all(override_all=False):
+    fix_builtins();
     fix_subprocess();
