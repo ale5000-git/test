@@ -31,7 +31,7 @@ matrix:
 addons:
   apt:
     packages:
-      - p7zip-full
+      - p7zip
       - openjdk-6-jre
 
 before_install:
