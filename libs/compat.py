@@ -2,13 +2,12 @@
 
 # Compatibility layer
 def fix_builtins():
-    import builtins;
-
-    if getattr(builtins, "sorted", None) is None:
+    if __builtins__.get("sorted") is None:
         def _sorted(list):
+            print("CUSTOM SORTED");
             list.sort();
             return list;
-        builtins.sorted = _sorted;
+        __builtins__.update(sorted=_sorted);
 
 def fix_subprocess():
     import subprocess;
