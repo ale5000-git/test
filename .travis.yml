@@ -11,14 +11,19 @@ matrix:
       env: TOXENV=py26
     - os: linux
       python: "3.2"
+      env: TOXENV=py32
     - os: linux
       python: "nightly"
+      env: TOXENV=py-nightly
     - os: linux
       python: "pypy"
+      env: TOXENV=pypy
     - os: linux
       python: "pypy3"
+      env: TOXENV=pypy3
     - os: osx
       language: generic
+      env: TOXENV=py-default
   allow_failures:
     - os: osx
   fast_finish: true
@@ -26,9 +31,7 @@ matrix:
 addons:
   apt:
     packages:
-      #- android-tools-adb
       - p7zip-full
-      #- zipalign
 
 install: true
 script: python test.py
