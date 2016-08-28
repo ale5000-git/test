@@ -1,12 +1,18 @@
 sudo: false
 language: python
 
+env:
+  global: TERM=dumb
+
 matrix:
   include:
     - os: linux
       python: "2.6"
+      env: TOXENV=py26
     - os: linux
-      python: "3.4"
+      python: "3.2"
+    - os: linux
+      python: "nightly"
     - os: linux
       python: "pypy"
     - os: linux
@@ -15,6 +21,7 @@ matrix:
       language: generic
   allow_failures:
     - os: osx
+  fast_finish: true
 
 addons:
   apt:
@@ -22,9 +29,6 @@ addons:
       #- android-tools-adb
       - p7zip-full
       #- zipalign
-
-env:
-  - RUN_TYPE=dumb
 
 install: true
 script: python test.py
