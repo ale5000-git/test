@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os;
 import subprocess;
+
 import libs.compat as CompatLayer;
 CompatLayer.fix_all();
 
