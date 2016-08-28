@@ -5,6 +5,7 @@ import subprocess;
 import libs.compat as CompatLayer;
 #CompatLayer.fix_all();
 
+import sys;
 print("0: "+str(sys.modules.__builtin__))
 print("1: "+str(__builtins__));
 #import __builtin__;
