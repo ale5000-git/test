@@ -7,11 +7,11 @@ def fix_builtins():
         list.sort();
         return list;
 
-    try:
-        if __builtins__.get("sorted") is None:
-            __builtins__.update(sorted=_sorted);
-        print("CUSTOM 1");
-    except AttributeError:
+    #try:
+        #if __builtins__.get("sorted") is None:
+            #__builtins__.update(sorted=_sorted);
+        #print("CUSTOM 1");
+    if True:
         try:
             import builtins;
             print("CUSTOM 2");
