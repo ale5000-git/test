@@ -2,12 +2,24 @@
 
 # Compatibility layer
 def fix_builtins():
-    if __builtins__.get("sorted") is None:
-        def _sorted(list):
-            print("CUSTOM SORTED");
-            list.sort();
-            return list;
-        __builtins__.update(sorted=_sorted);
+    def _sorted(list):
+        print("CUSTOM SORTED");
+        list.sort();
+        return list;
+
+    try:
+        if __builtins__.get("sorted") is None:
+            __builtins__.update(sorted=_sorted);
+        print("CUSTOM 1");
+    except AttributeError:
+        try:
+            import builtins;
+            print("CUSTOM 2");
+        except ImportError:
+            import __builtin__ as builtins;
+            print("CUSTOM 3");
+        if getattr(builtins, "sorted", None) == None:
+            builtins.sorted=_sorted;
 
 def fix_subprocess():
     import subprocess;
