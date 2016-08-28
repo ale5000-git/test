@@ -6,6 +6,7 @@ import libs.compat as CompatLayer;
 #CompatLayer.fix_all();
 
 print("1: "+str(__builtins__));
+import __builtin__;
 print("2: "+str(__builtin__));
 print("3: "+str(sorted));
 
