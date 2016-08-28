@@ -1,7 +1,17 @@
 #!/usr/bin/env python
 
 # Compatibility layer
-def subprocess():
+def _get_sorted():
+    try:
+        return sorted;
+    except NameError:
+        def _sorted(list):
+            list.sort();
+            return list;
+        return _sorted;
+sorted = _get_sorted();
+
+def fix_subprocess():
     import subprocess;
 
     class _ExtendedCalledProcessError(subprocess.CalledProcessError):
@@ -33,3 +43,6 @@ def subprocess():
         from subprocess import check_output;
     except ImportError:
         subprocess.check_output = _check_output;
+
+def fix_all(override_all=False):
+    fix_subprocess();
