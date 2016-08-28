@@ -32,12 +32,11 @@ addons:
   apt:
     packages:
       - p7zip-full
-      - openjdk-7-jre
+      - openjdk-8-jre
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install p7zip; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install openjdk-7-jre; fi
 
 install: true
 script: python test.py
