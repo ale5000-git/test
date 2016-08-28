@@ -5,9 +5,10 @@ import subprocess;
 import libs.compat as CompatLayer;
 #CompatLayer.fix_all();
 
+print("0: "+str(sys.modules.__builtin__))
 print("1: "+str(__builtins__));
-import __builtin__;
-print("2: "+str(__builtin__));
+#import __builtin__;
+#print("2: "+str(__builtin__));
 print("3: "+str(sorted));
 
 #dir_list = tuple(sorted(os.listdir(".")));
