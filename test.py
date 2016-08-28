@@ -10,7 +10,7 @@ CompatLayer.fix_all();
 
 try:
     out = subprocess.check_output(["java", "-version"], stderr=subprocess.STDOUT);
-    print(os.linesep+os.linesep+"Good: "+out);
+    print(os.linesep+os.linesep+"Good: "+out.decode());
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+"Out: "+e.output.decode("utf-8").strip());
@@ -18,14 +18,14 @@ except subprocess.CalledProcessError as e:
 try:
     
     out = subprocess.check_output(["7za", "-h"], stderr=subprocess.STDOUT);
-    print(os.linesep+os.linesep+"Good: "+out);
+    print(os.linesep+os.linesep+"Good: "+out.decode());
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+"Out: "+e.output.decode("utf-8").strip());
 
 try:
     out = subprocess.check_output(["7za", "-v"], stderr=subprocess.STDOUT);
-    print(os.linesep+os.linesep+"Good: "+out);
+    print(os.linesep+os.linesep+"Good: "+out.decode());
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+"Out: "+e.output.decode("utf-8").strip());
