@@ -32,10 +32,12 @@ addons:
   apt:
     packages:
       - p7zip-full
+      - java
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install p7zip; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install java; fi
 
 install: true
 script: python test.py
