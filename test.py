@@ -3,12 +3,10 @@ import os;
 import subprocess;
 
 import libs.compat as CompatLayer;
-#CompatLayer.fix_all();
+CompatLayer.fix_all();
 
-import __builtin__;
-
-#dir_list = tuple(sorted(os.listdir(".")));
-#print(dir_list);
+dir_list = tuple(sorted(os.listdir(".")));
+print(dir_list);
 
 try:
     subprocess.check_output(["java", "-v"], stderr=subprocess.STDOUT);
