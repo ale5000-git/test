@@ -13,3 +13,9 @@ try:
 except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+"Out: "+e.output.decode("utf-8").strip());
+
+try:
+    subprocess.check_output(["7za", "-v"], stderr=subprocess.STDOUT);
+except subprocess.CalledProcessError as e:
+    print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
+    print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+"Out: "+e.output.decode("utf-8").strip());
