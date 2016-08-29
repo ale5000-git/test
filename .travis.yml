@@ -26,14 +26,15 @@ matrix:
       env: TOXENV=py-default
   allow_failures:
     - os: osx
-  fast_finish: true0
+  fast_finish: true
 
-jdk:
-  - openjdk6
 addons:
   apt:
     packages:
       - p7zip-full
+      - openjdk-6-jre
+jdk:
+  - openjdk6
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
