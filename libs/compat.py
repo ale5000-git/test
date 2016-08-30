@@ -8,6 +8,19 @@ def fix_builtins():
         list.sort();
         return list;
 
+    import sys;
+    def _print(*args, sep=" ", end="\n", file=sys.stdout, flush=False):
+        #file.write(sep.join(arg for arg in args));
+        file.write(sep.join(args.__iter__()));
+        if(end != ""): file.write(end);
+        if flush: file.flush();
+
+    _print("'", end="");
+    _print("abc", "def", flush=False, end="");
+    _print("'", end="");
+    _print();
+    sys.exit();
+
     if(__builtins__.__class__ is dict):
         builtins_dict = __builtins__;
         print("CUSTOM 1");
