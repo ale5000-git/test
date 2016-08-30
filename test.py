@@ -2,8 +2,11 @@
 import os;
 import subprocess;
 
-import libs.compat as CompatLayer;
-CompatLayer.fix_all();
+curdir = os.getcwd();
+sys.path.insert(1, curdir+os.sep+"libs");
+
+import compat;
+compat.fix_all();
 
 #dir_list = tuple(sorted(os.listdir(".")));
 #print(dir_list);
