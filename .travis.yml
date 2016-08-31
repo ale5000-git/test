@@ -24,7 +24,7 @@ matrix:
     - os: linux
       language: android
       android:
-        components: sys-img-x86-android-17
+        components: sys-img-armeabi-v7a-android-15
       env: TOXENV=android-emu
     - os: osx
       language: generic
@@ -40,8 +40,6 @@ addons:
       - openjdk-6-jre
       - openjdk-6-jdk
       #- android-tools-adb
-jdk:
-  - openjdk6
 
 before_install:
   - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew update; fi
