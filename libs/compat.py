@@ -21,8 +21,14 @@ def fix_builtins():
         list.sort();
         return list;
 
-    import __builtin__;
-    sys.stdout.write(str(__builtin__.print));
+    try:
+        import builtins;
+    except ImportError:
+        import __builtin__ as builtins;
+    builtins.__dict__.get("print") is None:
+        sys.stdout.write("111");
+    else:
+        sys.stdout.write("222");
     _print("'", end="");
     _print("abc", "def", flush=False, end="");
     _print("'", end="");
