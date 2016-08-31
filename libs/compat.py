@@ -2,18 +2,24 @@
 
 # Compatibility layer
 def fix_builtins():
+    import sys;
     override_dict = {};
+
+    def _print(*args, **kwargs):
+        opt = {"sep": " ", "end": "\n", "file": sys.stdout, "flush": False};
+        for key in kwargs:
+            if(key in opt):
+                opt[key] = kwargs[key];
+            else:
+                raise TypeError("'"+key+"' is an invalid keyword argument for this function");
+        opt["file"].write(opt["sep"].join(args.__iter__()));
+        if(opt["end"] != ""): opt["file"].write(opt["end"]);
+        if opt["flush"]: opt["file"].flush();
+
     def _sorted(list):
         print("CUSTOM SORTED");
         list.sort();
         return list;
-
-    import sys;
-    def _print(*args, sep=" ", end="\n", file=sys.stdout, flush=False):
-        #file.write(sep.join(arg for arg in args));
-        file.write(sep.join(args.__iter__()));
-        if(end != ""): file.write(end);
-        if flush: file.flush();
 
     _print("'", end="");
     _print("abc", "def", flush=False, end="");
