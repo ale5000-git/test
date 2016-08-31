@@ -21,13 +21,14 @@ matrix:
     - os: linux
       python: "pypy3"
       env: TOXENV=pypy3
-    - os: osx
-      language: generic
-      env: TOXENV=py-default
     - os: linux
+      language: android
       android:
         components: sys-img-x86-android-17
       env: TOXENV=android-emu
+    - os: osx
+      language: generic
+      env: TOXENV=py-default
   allow_failures:
     - os: osx
   fast_finish: true
