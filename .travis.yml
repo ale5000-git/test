@@ -24,6 +24,10 @@ matrix:
     - os: osx
       language: generic
       env: TOXENV=py-default
+    - os: linux
+      android:
+        components: sys-img-x86-android-17
+      env: TOXENV=android-emu
   allow_failures:
     - os: osx
   fast_finish: true
