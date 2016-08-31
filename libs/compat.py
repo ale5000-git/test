@@ -12,7 +12,7 @@ def fix_builtins():
                 opt[key] = kwargs[key];
             else:
                 raise TypeError("'"+key+"' is an invalid keyword argument for this function");
-        opt["file"].write(opt["sep"].join(args.__iter__()));
+        opt["file"].write(opt["sep"].join(val for val in args));
         if(opt["end"] != ""): opt["file"].write(opt["end"]);
         if opt["flush"]: opt["file"].flush();
 
@@ -21,8 +21,8 @@ def fix_builtins():
         list.sort();
         return list;
 
-    _print(print);
-    _print(typeof(print));
+    sys.stdout.write(print);
+    sys.stdout.write(typeof(print));
     _print("'", end="");
     _print("abc", "def", flush=False, end="");
     _print("'", end="");
