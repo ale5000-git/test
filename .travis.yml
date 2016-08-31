@@ -33,6 +33,8 @@ addons:
     packages:
       - p7zip-full
       - openjdk-6-jre
+      - openjdk-6-jdk
+      - android-tools-adb
 jdk:
   - openjdk6
 
