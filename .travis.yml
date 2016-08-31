@@ -24,11 +24,14 @@ matrix:
     - os: linux
       language: android
       android:
-        components: sys-img-armeabi-v7a-android-15
+        components:
+          - build-tools-19.1.0
+          - android-22
+          - sys-img-armeabi-v7a-android-22
       env: TOXENV=android-emu
-    - os: osx
-      language: generic
-      env: TOXENV=py-default
+    #- os: osx
+      #language: generic
+      #env: TOXENV=py-default
   allow_failures:
     - os: osx
   fast_finish: true
