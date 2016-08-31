@@ -21,8 +21,8 @@ def fix_builtins():
         list.sort();
         return list;
 
-    sys.stdout.write(type(__builtins__.get["print"]));
-    sys.stdout.write(str(__builtins__.get["print"]));
+    import __builtin__;
+    sys.stdout.write(str(__builtin__.print));
     _print("'", end="");
     _print("abc", "def", flush=False, end="");
     _print("'", end="");
