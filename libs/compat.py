@@ -30,6 +30,7 @@ def fix_builtins():
         builtins_dict = builtins.__dict__;
 
     if sys.version_info < (3, 3):
+        if sys.version_info < (3, 0): import print_function;
         orig_print = builtins_dict.get("print");
         override_dict["print"] = _print;
     if builtins_dict.get("sorted") is None:
