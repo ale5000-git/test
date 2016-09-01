@@ -4,36 +4,18 @@
 def fix_builtins():
     import sys;
     override_dict = {};
+    orig_print = None;
 
     def _print(*args, **kwargs):
-        opt = {"sep": " ", "end": "\n", "file": sys.stdout, "flush": False};
-        for key in kwargs:
-            if(key in opt):
-                opt[key] = kwargs[key];
-            else:
-                raise TypeError("'"+key+"' is an invalid keyword argument for this function");
-        opt["file"].write(opt["sep"].join(val for val in args));
-        if(opt["end"] != ""): opt["file"].write(opt["end"]);
-        if opt["flush"]: opt["file"].flush();
+        flush = kwargs.get("flush", False);
+        if "flush" in kwargs: del kwargs["flush"];
+        orig_print(*args, **kwargs);
+        if flush: kwargs.get("file", sys.stdout).flush();
 
     def _sorted(list):
         print("CUSTOM SORTED");
         list.sort();
         return list;
-
-    try:
-        import builtins;
-    except ImportError:
-        import __builtin__ as builtins;
-    #builtins.__dict__.get("print") is None:
-        #sys.stdout.write("111");
-    #else:
-        #sys.stdout.write("222");
-    _print("'", end="");
-    _print("abc", "def", flush=False, end="");
-    _print("'", end="");
-    _print();
-    sys.exit();
 
     if(__builtins__.__class__ is dict):
         builtins_dict = __builtins__;
@@ -47,9 +29,13 @@ def fix_builtins():
             print("CUSTOM 3");
         builtins_dict = builtins.__dict__;
 
+    if sys.version_info < (3, 3):
+        orig_print = builtins_dict.get("print");
+        override_dict["print"] = _print;
     if builtins_dict.get("sorted") is None:
         override_dict["sorted"] = _sorted;
     builtins_dict.update(override_dict);
+    del override_dict;
 
 def fix_subprocess():
     import subprocess;
