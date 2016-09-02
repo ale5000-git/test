@@ -34,6 +34,6 @@ except subprocess.CalledProcessError as e:
     print(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep+"Out: "+e.output.decode("utf-8").strip());
 
-print("abc", "def");
-#print("1, 2, 3...", end="");
-#print("stella");
+print_("abc", "def");
+print_("1, 2, 3...", end="");
+print_("stella");
