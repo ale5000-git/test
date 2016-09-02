@@ -6,8 +6,8 @@ import subprocess;
 curdir = os.getcwd();
 sys.path.insert(1, curdir+os.sep+"libs");
 
-import compat;
-compat.fix_all();
+import compatlayer;
+compatlayer.fix_all();
 
 #dir_list = tuple(sorted(os.listdir(".")));
 #print(dir_list);
