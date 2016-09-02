@@ -23,14 +23,13 @@ def fix_builtins():
         builtins_dict = builtins.__dict__;
 
     def _print_wrapper(*args, **kwargs):
-        print("CUSTOM PRINT: WRAPPER");
+        orig_print("CUSTOM PRINT: WRAPPER");
         flush = kwargs.get("flush", False);
         if "flush" in kwargs: del kwargs["flush"];
         orig_print(*args, **kwargs);
         if flush: kwargs.get("file", sys.stdout).flush();
 
     def _print_full(*args, **kwargs):
-        print("CUSTOM PRINT: FULL");
         opt = {"sep": " ", "end": "\n", "file": sys.stdout, "flush": False};
         for key in kwargs:
             if(key in opt):
