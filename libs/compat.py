@@ -5,25 +5,21 @@
 
 def fix_builtins():
     import sys;
-
     override_dict = {};
     orig_print = None;
     used_print = None;
 
     if(__builtins__.__class__ is dict):
         builtins_dict = __builtins__;
-        print("CUSTOM 1");
     else:
         try:
             import builtins;
-            print("CUSTOM 2");
         except ImportError:
             import __builtin__ as builtins;
-            print("CUSTOM 3");
         builtins_dict = builtins.__dict__;
 
     def _print_wrapper(*args, **kwargs):
-        orig_print("CUSTOM PRINT: WRAPPER");
+        orig_print("PRINT WRAPPER");
         flush = kwargs.get("flush", False);
         if "flush" in kwargs: del kwargs["flush"];
         orig_print(*args, **kwargs);
@@ -41,7 +37,6 @@ def fix_builtins():
             opt["file"].flush();
 
     def _sorted(list):
-        print("CUSTOM SORTED");
         list.sort();
         return list;
 
