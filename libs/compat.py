@@ -5,20 +5,10 @@
 
 def fix_builtins():
     import sys;
+
     override_dict = {};
     orig_print = None;
-    custom_print = None;
-
-    def _print_wrapper(*args, **kwargs):
-        flush = kwargs.get("flush", False);
-        if "flush" in kwargs: del kwargs["flush"];
-        orig_print(*args, **kwargs);
-        if flush: kwargs.get("file", sys.stdout).flush();
-
-    def _sorted(list):
-        print("CUSTOM SORTED");
-        list.sort();
-        return list;
+    used_print = None;
 
     if(__builtins__.__class__ is dict):
         builtins_dict = __builtins__;
@@ -32,11 +22,45 @@ def fix_builtins():
             print("CUSTOM 3");
         builtins_dict = builtins.__dict__;
 
-    if sys.version_info < (3, 3):
-        orig_print = builtins_dict.get("print");
-        override_dict["print"] = _print_wrapper;
+    def _print_wrapper(*args, **kwargs):
+        print("CUSTOM PRINT: WRAPPER");
+        flush = kwargs.get("flush", False);
+        if "flush" in kwargs: del kwargs["flush"];
+        orig_print(*args, **kwargs);
+        if flush: kwargs.get("file", sys.stdout).flush();
+
+    def _print_full(*args, **kwargs):
+        print("CUSTOM PRINT: FULL");
+        opt = {"sep": " ", "end": "\n", "file": sys.stdout, "flush": False};
+        for key in kwargs:
+            if(key in opt):
+                opt[key] = kwargs[key];
+            else:
+                raise TypeError("'"+key+"' is an invalid keyword argument for this function");
+        opt["file"].write(opt["sep"].join(str(val) for val in args)+opt["end"]);
+        if opt["flush"]:
+            opt["file"].flush();
+
+    def _sorted(list):
+        print("CUSTOM SORTED");
+        list.sort();
+        return list;
+
+    # Function 'print' (also aliased as print_)
+    if sys.version_info >= (3, 3):
+        used_print = builtins_dict.get("print");
+    else:
+        if sys.version_info >= (2, 6):
+            orig_print = builtins_dict.get("print");
+            used_print = _print_wrapper;
+        else:
+            used_print = _print_full;
+        override_dict["print"] = used_print;
+    override_dict["print_"] = used_print;
+    # Function 'sorted'
     if builtins_dict.get("sorted") is None:
         override_dict["sorted"] = _sorted;
+
     builtins_dict.update(override_dict);
     del override_dict;
 
