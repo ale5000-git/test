@@ -44,8 +44,8 @@ def fix_builtins():
     if sys.version_info >= (3, 3):
         used_print = builtins_dict.get("print");
     else:
-        if sys.version_info >= (2, 6):
-            orig_print = builtins_dict.get("print");
+        orig_print = builtins_dict.get("print");
+        if orig_print is not None:
             used_print = _print_wrapper;
         else:
             used_print = _print_full;
