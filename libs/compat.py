@@ -1,12 +1,15 @@
-#!/usr/bin/env python
-
 # Compatibility layer
+#
+# Copyright (C) 2016  ale5000
+# License: GNU Lesser General Public License v3+
+
 def fix_builtins():
     import sys;
     override_dict = {};
     orig_print = None;
+    custom_print = None;
 
-    def _print(*args, **kwargs):
+    def _print_wrapper(*args, **kwargs):
         flush = kwargs.get("flush", False);
         if "flush" in kwargs: del kwargs["flush"];
         orig_print(*args, **kwargs);
@@ -30,9 +33,8 @@ def fix_builtins():
         builtins_dict = builtins.__dict__;
 
     if sys.version_info < (3, 3):
-        if sys.version_info < (3, 0): eval("from __future__ import print_function");
         orig_print = builtins_dict.get("print");
-        override_dict["print"] = _print;
+        override_dict["print"] = _print_wrapper;
     if builtins_dict.get("sorted") is None:
         override_dict["sorted"] = _sorted;
     builtins_dict.update(override_dict);
