@@ -40,6 +40,8 @@ matrix:
 
 addons:
   apt:
+    sources:
+      - android-tools-adb
     packages:
       - p7zip-full
       #- openjdk-6-jre
