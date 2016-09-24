@@ -44,6 +44,7 @@ addons:
       #- android-tools-adb
     packages:
       - p7zip-full
+      - zipalign
       #- openjdk-6-jre
       #- openjdk-6-jdk
       #- android-tools-adb
