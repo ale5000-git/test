@@ -41,13 +41,14 @@ matrix:
 addons:
   apt:
     sources:
+      - android-tools
       #- android-tools-adb
     packages:
       - p7zip-full
-      - zipalign
+      #- zipalign
       #- openjdk-6-jre
       #- openjdk-6-jdk
-      #- android-tools-adb
+      - android-tools-adb
 
 before_install:
   - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew update; fi;
