@@ -9,6 +9,10 @@ sys.path.insert(1, curdir+os.sep+"libs");
 import compatlayer;
 compatlayer.fix_all();
 
+class MainClass1(object):
+    """This class docstring shows how to use sphinx and rst syntax"""
+    return True
+
 try:
     out = subprocess.check_output(["java", "-versionX"], stderr=subprocess.STDOUT);
     print_(os.linesep+os.linesep+"Output: "+out.decode());
