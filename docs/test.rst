@@ -1,4 +1,4 @@
-.. automodule:: template
+.. automodule:: test
     :members:
     :undoc-members:
     :inherited-members:
