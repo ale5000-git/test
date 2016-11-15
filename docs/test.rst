@@ -1,11 +1,6 @@
 .. automodule:: test
-    :members:
-    :undoc-members:
-    :inherited-members:
-    :show-inheritance:
+   :members:
 
 .. automodule:: template
-    :members:
-    :undoc-members:
-    :inherited-members:
-    :show-inheritance:
+   :members:
+   :show-inheritance:
