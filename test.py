@@ -10,7 +10,7 @@ import compatlayer;
 compatlayer.fix_all();
 
 def Func1(object):
-    """This class docstring shows how to use sphinx and rst syntax"""
+    """This class docstring"""
     return True
 
 try:
