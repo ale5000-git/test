@@ -38,7 +38,10 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     lintOptions {
-        abortOnError false
+        htmlReport true
+        htmlOutput file("lint-report.html")
+        abortOnError true
+        warningsAsErrors true
     }
 }
 
