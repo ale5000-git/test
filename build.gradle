@@ -37,6 +37,9 @@ dependencies {
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    lintOptions {
+        abortOnError false
+    }
 }
 
 if (file('user.gradle').exists()) {
