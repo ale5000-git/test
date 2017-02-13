@@ -43,6 +43,11 @@ android {
         abortOnError true
         warningsAsErrors true
     }
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 255
+    }
 }
 
 if (file('user.gradle').exists()) {
