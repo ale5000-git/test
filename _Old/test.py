@@ -20,3 +20,8 @@ except subprocess.CalledProcessError as e:
     print_(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
     print_("Return: "+str(e.returncode)+os.linesep+"Cmd: "+str(e.cmd)+os.linesep);
     print_("Out: "+e.output.decode("utf-8").strip()+os.linesep+"Out: "+e.stdout.decode("utf-8").strip()+os.linesep+"Err: "+str(e.stderr));
+
+if sys.version_info >= (3, 3):
+    print_(1)
+else:
+    print_(2)
