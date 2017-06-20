@@ -14,7 +14,7 @@ def Func1(object):
     return True
 
 try:
-    out = subprocess.check_output(["java", "-versionX"], stderr=subprocess.STDOUT);
+    out = subprocess.check_output(["java", "-version"], stderr=subprocess.STDOUT);
     print_(os.linesep+os.linesep+"Output: "+out.decode());
 except subprocess.CalledProcessError as e:
     print_(os.linesep+os.linesep+"E: "+str(e)+os.linesep);
