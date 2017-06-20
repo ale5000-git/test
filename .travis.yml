@@ -24,18 +24,18 @@ matrix:
     #- os: linux
       #python: "pypy3"
       #env: TOXENV=pypy3
-    - os: linux
-      language: android
-      android:
-        components:
-          - android-22
-          - sys-img-armeabi-v7a-android-22
-      env: TOXENV=android-emu
+    #- os: linux
+    #  language: android
+    #  android:
+    #    components:
+    #      - android-22
+    #      - sys-img-armeabi-v7a-android-22
+    #  env: TOXENV=android-emu
     #- os: osx
       #language: generic
       #env: TOXENV=py-default
-  allow_failures:
-    - os: osx
+  #allow_failures:
+  #  - os: osx
   fast_finish: true
 
 addons:
@@ -64,7 +64,7 @@ install:
 
 script:
   - python _Old/test.py
-  - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV == 'py26' ]]; then coverage run _Old/test.py; fi
+  - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV == 'py26' ]]; then echo Coverage; coverage run _Old/test.py; fi
 
 after_success:
   #- codecov
