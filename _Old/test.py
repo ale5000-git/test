@@ -6,8 +6,8 @@ import subprocess;
 curdir = os.getcwd();
 sys.path.insert(1, curdir+os.sep+"libs");
 
-import compatlayer;
-compatlayer.fix_all();
+import pycompatlayer;
+pycompatlayer.fix_all();
 
 def Func1(object):
     """This class docstring"""
