@@ -24,3 +24,14 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
+# https://github.com/codecov/example-python/blob/master/.travis.yml
+
+install:
+  - pip install codecov
+
+script:
+  - coverage run _Old/test.py
+
+after_success:
+  - codecov
