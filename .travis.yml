@@ -58,6 +58,7 @@ before_install:
 
 #install: "pip install -r requirements/requirements.pip"
 install:
+  - pip install pycompatlayer
   - pip install codecov
 
 script:
