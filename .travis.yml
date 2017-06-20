@@ -51,20 +51,20 @@ addons:
       #- android-tools-adb
 
 before_install:
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew update; fi;
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew install p7zip; fi;
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew update; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew install p7zip; fi
 
 # https://github.com/codecov/example-python/blob/master/.travis.yml
 
 #install: "pip install -r requirements/requirements.pip"
 install:
-  - pip install --upgrade pip
+  #- pip install --upgrade pip
   - pip install pycompatlayer
   - pip install codecov
 
 script:
   - python _Old/test.py
-  - coverage run _Old/test.py
+  - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV == 'py26' ]]; then coverage run _Old/test.py; fi
 
 after_success:
   #- codecov
