@@ -1,6 +1,9 @@
 sudo: false
 language: python
 
+git:
+  depth: 1
+
 env:
   global: TERM=dumb
 
@@ -67,4 +70,4 @@ script:
   - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV == 'py26' ]]; then echo Coverage; coverage run _Old/test.py; fi
 
 after_success:
-  #- codecov
+  - codecov
