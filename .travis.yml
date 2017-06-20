@@ -42,9 +42,9 @@ addons:
   apt:
     sources:
       #- android-tools
-      - debian-sid
+      #- debian-sid
     packages:
-      - p7zip-full
+      #- p7zip-full
       #- zipalign
       #- openjdk-6-jre
       #- openjdk-6-jdk
