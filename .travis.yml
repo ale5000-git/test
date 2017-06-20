@@ -58,12 +58,12 @@ before_install:
 
 #install: "pip install -r requirements/requirements.pip"
 install:
+  - python -m pip install --upgrade pip
   - pip install pycompatlayer
-  - pip install codecov
 
 script:
   - python _Old/test.py
   - coverage run _Old/test.py
 
 after_success:
-  - codecov
+  #- codecov
