@@ -66,8 +66,8 @@ install:
   - pip install codecov
 
 script:
-  - python _Old/test.py
-  - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV != 'py32' ]]; then echo Coverage; coverage run _Old/test.py; fi
+  #- python script.py
+  - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV != 'py32' ]]; then echo Coverage; coverage run script.py; fi
 
 after_success:
   - codecov

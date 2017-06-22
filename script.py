@@ -9,7 +9,7 @@ sys.path.insert(1, curdir+os.sep+"libs");
 import pycompatlayer;
 pycompatlayer.fix_all();
 
-def Func1(object):
+def func1(object):
     """This class docstring"""
     return True
 
