@@ -70,4 +70,4 @@ script:
   - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV != 'py32' ]]; then echo Coverage; coverage run script.py; fi
 
 after_success:
-  - codecov
+  #- codecov

@@ -6,7 +6,7 @@ class ScriptTestCase(unittest.TestCase):
 
     def test_func1_return(self):
         """...?"""
-        self.assertTrue(func1())
+        self.assertTrue(func1(''))
 
 if __name__ == '__main__':
     unittest.main()
