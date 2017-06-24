@@ -7,14 +7,19 @@ import setuptools
     #requires.append("configparser")
 
 test_requirements=[
-    #"unittest2"
-    "setuptools==29.0.1",
-    "unittest2;python_version<'3.2'",
+    "unittest2"
+    #"setuptools==29.0.1",
+    #"unittest2;python_version<'3.2'",
 ]
 
 def custom_test_suite():
+    import sys
+
     try:
-        import unittest2 as unittest
+        if sys.version_info <= (3, 4):
+            import unittest2 as unittest
+        else:
+            import unittest
     except ImportError:
         import unittest
     return unittest.TestLoader().discover("tests", pattern="*_test.py")
