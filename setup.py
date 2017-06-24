@@ -3,8 +3,8 @@
 
 import setuptools
 
-if sys.version_info <= (3, 2):
-    pass#requires.append("configparser")
+#if sys.version_info <= (3, 2):
+    #requires.append("configparser")
 
 test_requirements=[
     "setuptools>=29.0.1"
