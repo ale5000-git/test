@@ -3,6 +3,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
+'''
 def discover_and_run_tests():
     import os
     import sys
@@ -52,12 +53,24 @@ except ImportError:
 
         def run(self):
             discover_and_run_tests()
+'''
+
+
+def my_test_suite():
+    import unittest
+    test_loader = unittest.TestLoader()
+    test_suite = test_loader.discover('tests', pattern='*_test.py')
+    return test_suite
+
+
 
 config = {
     'name': 'name',
     'version': 'version',
     'url': 'http://example.com',
-    'cmdclass': {'test': DiscoverTest},
+    'py_modules': ["script"],
+    'test_suite': 'setup.my_test_suite',
+    #'cmdclass': {'test': DiscoverTest},
 }
 
 setup(**config)
