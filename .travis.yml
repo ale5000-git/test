@@ -38,7 +38,7 @@ matrix:
   fast_finish: true
 
 install:
-  - pip install setuptools
+  - pip install -U setuptools
   - pip install codecov
 
 script:
