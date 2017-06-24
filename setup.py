@@ -4,7 +4,10 @@
 import setuptools
 
 def custom_test_suite():
-    import unittest
+    try:
+        import unittest2 as unittest
+    except ImportError:
+        import unittest
     return unittest.TestLoader().discover("tests", pattern="*_test.py")
 
 setuptools.setup(
