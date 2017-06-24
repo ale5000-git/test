@@ -43,3 +43,6 @@ install:
 
 script:
   - if [[ $TRAVIS_OS_NAME == 'linux' && $TOXENV != 'py32' ]]; then echo Running Coverage...; coverage run setup.py test; else echo Running script...; python pycompatlayer.py; fi
+
+after_success:
+  - codecov
