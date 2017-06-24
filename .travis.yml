@@ -61,13 +61,12 @@ before_install:
 
 #install: "pip install -r requirements/requirements.pip"
 install:
-  #- pip install --upgrade pip
   - pip install pycompatlayer
   - pip install codecov
 
 script:
   #- python script.py
-  - if [[ $TRAVIS_OS_NAME == 'linux' && $TOXENV != 'py_32' ]]; then echo Coverage; coverage run script.py; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' && $TOXENV != 'py32' ]]; then echo Coverage; coverage run script.py; fi
 
 after_success:
   #- codecov
