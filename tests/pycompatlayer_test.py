@@ -17,7 +17,5 @@ class PyCompatLayerTestCase(unittest.TestCase):
             import __builtin__ as builtins
         del builtins.pycompatlayer
 
-        self.assertTrue(pycompatlayer.fix_all())
-
 if __name__ == '__main__':
     unittest.main()
