@@ -18,15 +18,15 @@ matrix:
     - os: linux
       python: "3.3"
       env: TOXENV=py33
-    #- os: linux
-      #python: "nightly"
-      #env: TOXENV=py-nightly
-    #- os: linux
-      #python: "pypy"
-      #env: TOXENV=pypy
-    #- os: linux
-      #python: "pypy3"
-      #env: TOXENV=pypy3
+    - os: linux
+      python: "nightly"
+      env: TOXENV=py-nightly
+    - os: linux
+      python: "pypy"
+      env: TOXENV=pypy
+    - os: linux
+      python: "pypy3"
+      env: TOXENV=pypy3
     #- os: linux
     #  language: android
     #  android:
@@ -67,7 +67,7 @@ install:
 
 script:
   #- python script.py
-  - if [[ $TRAVIS_OS_NAME != 'osx' && $TOXENV != 'py32' ]]; then echo Coverage; coverage run script.py; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' && $TOXENV != 'py32' ]]; then echo Coverage; coverage run script.py; fi
 
 after_success:
   #- codecov
