@@ -13,6 +13,9 @@ matrix:
       python: "2.6"
       env: TOXENV=py26
     - os: linux
+      python: "2.7"
+      env: TOXENV=py27
+    - os: linux
       python: "3.2"
       env: TOXENV=py32
     - os: linux
@@ -66,7 +69,7 @@ install:
 
 script:
   #- python script.py
-  - if [[ $TRAVIS_OS_NAME == 'linux' && $TOXENV != 'py32' ]]; then echo Running Coverage...; coverage run setup.py test; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' && $TOXENV != 'py26' && $TOXENV != 'py32' ]]; then echo Running Coverage...; coverage run setup.py test; else python pycompatlayer.py; fi
 
 after_success:
   #- codecov
