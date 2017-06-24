@@ -3,9 +3,12 @@
 
 import setuptools
 
+if sys.version_info <= (3, 2):
+    pass#requires.append("configparser")
+
 test_requirements=[
     "setuptools>=29.0.1"
-    #"unittest2;python_version<'3.2'"
+    "unittest2;python_version<'3.2'"
 ]
 
 def custom_test_suite():
