@@ -4,7 +4,7 @@
 import setuptools
 
 test_requirements=[
-    "unittest2;python_version<'3.7'"
+    "unittest2;python_version<'3.2'"
 ]
 
 def custom_test_suite():
