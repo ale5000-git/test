@@ -3,6 +3,10 @@
 
 import setuptools
 
+test_requirements=[
+    "unittest2;python_version<'3.7'"
+]
+
 def custom_test_suite():
     try:
         import unittest2 as unittest
@@ -22,6 +26,7 @@ setuptools.setup(
     license="LGPLv3+",
     platforms=["any"],
     py_modules=["pycompatlayer"],
+    tests_require=test_requirements,
     test_suite="setup.custom_test_suite",
 
     classifiers=[
