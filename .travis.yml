@@ -38,7 +38,7 @@ matrix:
   fast_finish: true
 
 install:
-  - if [[ $TOXENV == 'py32' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
+  - if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
   - pip install codecov
 
 script:
