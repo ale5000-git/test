@@ -9,6 +9,27 @@ env:
 
 matrix:
   include:
+    - os: linux
+      python: "2.6"
+      env: TOXENV=py26
+    - os: linux
+      python: "2.7"
+      env: TOXENV=py27
+    - os: linux
+      python: "3.2"
+      env: TOXENV=py32
+    - os: linux
+      python: "3.3"
+      env: TOXENV=py33
+    - os: linux
+      python: "nightly"
+      env: TOXENV=py-nightly
+    - os: linux
+      python: "pypy"
+      env: TOXENV=pypy
+    - os: linux
+      python: "pypy3"
+      env: TOXENV=pypy3
     - os: osx
       language: generic
       env: TOXENV=py-default
@@ -16,11 +37,15 @@ matrix:
     - os: osx
   fast_finish: true
 
+addons:
+  apt:
+    packages:
+      - p7zip-full
+      - android-platform-tools
+
 install:
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
   #- pip install codecov
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew update; fi;
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew cask install java; fi;
 
 script:
   #- if [[ $TOXENV != 'py32' ]]; then echo Running Coverage...; coverage run setup.py test; else echo Running script...; python pycompatlayer.py; fi
