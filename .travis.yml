@@ -37,20 +37,12 @@ matrix:
     - os: osx
   fast_finish: true
 
-addons:
-  apt:
-    sources:
-      - android-tools
-    packages:
-      - p7zip-full
-
 install:
-  - adb devices
-  #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
-  #- pip install codecov
+  - if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
+  - pip install codecov
 
 script:
-  #- if [[ $TOXENV != 'py32' ]]; then echo Running Coverage...; coverage run setup.py test; else echo Running script...; python pycompatlayer.py; fi
+  - if [[ $TOXENV != 'py32' ]]; then echo Running Coverage...; coverage run setup.py test; else echo Running script...; python pycompatlayer.py; fi
 
 after_success:
-  #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
+  - if [[ $TOXENV != 'py32' ]]; then codecov; fi
