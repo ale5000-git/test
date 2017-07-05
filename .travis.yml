@@ -41,7 +41,7 @@ addons:
   apt:
     packages:
       - p7zip-full
-      - android-tools-adb
+      - android-tools
 
 install:
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
