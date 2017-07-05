@@ -39,11 +39,13 @@ matrix:
 
 addons:
   apt:
+    sources:
+      - android-tools
     packages:
       - p7zip-full
-      - android-tools
 
 install:
+  - adb devices
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
   #- pip install codecov
 
