@@ -21,6 +21,8 @@ matrix:
             - python-virtualenv
       before_install: . .travis/setup_virtualenv.sh '2.4'
     - os: linux
+      python: '3.2'
+    - os: linux
       python: '3.6'
     - os: linux
       python: pypy3
