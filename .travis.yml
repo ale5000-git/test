@@ -11,7 +11,6 @@ matrix:
   include:
     - os: linux
       language: generic
-      env: TOXENV=py24
       addons:
         apt:
           sources:
@@ -20,21 +19,15 @@ matrix:
             - python2.4
             - python-virtualenv
       before_install:
-        #- easy_install pip==1.1
-        #- pip install virtualenv==1.7.2
-        #- python2.4 -m virtualenv virtualenv
-        #- source virtualenv/bin/activate
         - virtualenv ~/virtualenv/python2.4
         - virtualenv -p /usr/bin/python2.4 ~/virtualenv/python2.4
         - cp -pf ~/virtualenv/python2.4/bin/python2.4 ~/virtualenv/python2.4/bin/python
         - source ~/virtualenv/python2.4/bin/activate
-        #- source virtualenv/bin/activate
         - export TRAVIS_PYTHON_VERSION=2.4
-      install:
-        - pip install -Iv setuptools==1.4.2
     - os: linux
       python: "3.6"
-      env: TOXENV=py36
+    - os: linux
+      python: pypi3
   allow_failures:
     - os: osx
   fast_finish: true
@@ -48,8 +41,9 @@ install:
 script:
   - echo $TRAVIS_PYTHON_VERSION
   - python -V
+  - pip -V
   - python setup.py test
-  #- if [[ $TOXENV != 'py32' ]]; then coverage run setup.py test; else echo python setup.py test; fi
+  - if [[ $TRAVIS_PYTHON_VERSION != '3.2' ]]; then coverage run setup.py test; else echo python setup.py test; fi
 
 after_success:
   #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
