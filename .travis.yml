@@ -23,8 +23,8 @@ matrix:
         #- easy_install pip==1.1
         #- pip install setuptools==1.4.2
         #- pip install virtualenv==1.7.2
-        #- python -m virtualenv virtualenv
-        #- source virtualenv/bin/activate
+        - python2.4 -m virtualenv virtualenv
+        - source virtualenv/bin/activate
     - os: linux
       python: "3.6"
       env: TOXENV=py36
@@ -39,9 +39,8 @@ install:
 
 script:
   - python2.4 -V
-  - python2.4 pycompatlayer.py
-  - python2.4 -m pip
-  - #if [[ $TOXENV != 'py32' ]]; then coverage run setup.py test; else echo python setup.py test; fi
+  #- python2.4 pycompatlayer.py
+  #- if [[ $TOXENV != 'py32' ]]; then coverage run setup.py test; else echo python setup.py test; fi
 
 after_success:
   #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
