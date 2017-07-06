@@ -18,8 +18,8 @@ matrix:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages: python2.4
       before_install:
-        - python -m venv venv
-        - source venv/bin/activate
+        - python -m virtualenv virtualenv
+        - source virtualenv/bin/activate
     - os: linux
       python: "3.6"
       env: TOXENV=py36
