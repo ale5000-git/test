@@ -28,6 +28,7 @@ matrix:
         #- source virtualenv/bin/activate
         - virtualenv ~/virtualenv/python2.4
         - virtualenv -p /usr/bin/python2.4 ~/virtualenv/python2.4
+        - cp -pf ~/virtualenv/python2.4/bin/python2.4 ~/virtualenv/python2.4/bin/python
         - source ~/virtualenv/python2.4/bin/activate
         #- source virtualenv/bin/activate
         - export TRAVIS_PYTHON_VERSION=2.4
