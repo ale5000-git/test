@@ -37,13 +37,11 @@ install:
   #- easy_install pip==1.1
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
   #- pip install unittest2
-  #- pip install codecov
 
 script:
   - echo $TRAVIS_PYTHON_VERSION
   - python -V
-  - pip -V
-  - .travis/run_coverage.sh 'pycompatlayer.py'
+  - .travis/run_codecov.sh 'pycompatlayer.py'
 
 after_success:
   #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
