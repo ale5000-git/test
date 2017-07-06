@@ -16,6 +16,3 @@ class PyCompatLayerTestCase(unittest.TestCase):
         except ImportError:
             import __builtin__ as builtins
         del builtins.pycompatlayer
-
-if __name__ == "__main__":
-    unittest.main()
