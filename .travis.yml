@@ -21,7 +21,7 @@ matrix:
             #- python-pip
       before_install:
         #- easy_install pip==1.1
-        - pip install setuptools=1.4.2
+        - pip install setuptools==1.4.2
         - pip install virtualenv==1.7.2
         - python -m virtualenv virtualenv
         - source virtualenv/bin/activate
