@@ -26,7 +26,15 @@ def custom_test_suite():
 
 def custom_test_suite_2():
     import pycompatlayer
+    import sys
 
+    try:
+        if sys.version_info <= (3, 4):
+            import unittest2 as unittest
+        else:
+            import unittest
+    except ImportError:
+        import unittest
     return unittest.TestLoader().loadTestsFromModule(pycompatlayer)
 
 
