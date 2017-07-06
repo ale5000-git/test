@@ -21,10 +21,10 @@ matrix:
             #- python-pip
       before_install:
         #- easy_install pip==1.1
-        - pip install setuptools==1.4.2
-        - pip install virtualenv==1.7.2
-        - python -m virtualenv virtualenv
-        - source virtualenv/bin/activate
+        #- pip install setuptools==1.4.2
+        #- pip install virtualenv==1.7.2
+        #- python -m virtualenv virtualenv
+        #- source virtualenv/bin/activate
     - os: linux
       python: "3.6"
       env: TOXENV=py36
@@ -34,11 +34,14 @@ matrix:
 
 install:
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
-  - pip install unittest2
-  - pip install codecov
+  #- pip install unittest2
+  #- pip install codecov
 
 script:
-  - if [[ $TOXENV != 'py32' ]]; then coverage run setup.py test; else echo python setup.py test; fi
+  - python --version
+  - python pycompatlayer.py
+  - python3.4 pycompatlayer.py
+  - #if [[ $TOXENV != 'py32' ]]; then coverage run setup.py test; else echo python setup.py test; fi
 
 after_success:
   #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
