@@ -24,6 +24,11 @@ def custom_test_suite():
         import unittest
     return unittest.TestLoader().discover("tests", pattern="*_test.py")
 
+def custom_test_suite_2():
+    import pycompatlayer
+
+    return unittest.TestLoader().loadTestsFromModule(pycompatlayer)
+
 
 setuptools.setup(
     zip_safe=True,
@@ -38,7 +43,7 @@ setuptools.setup(
     platforms=["any"],
     py_modules=["pycompatlayer"],
     tests_require=test_requirements,
-    test_suite="tests",
+    test_suite="setup.custom_test_suite_2",
 
     classifiers=[
         "Development Status :: 4 - Beta",
