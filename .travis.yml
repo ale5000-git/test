@@ -20,10 +20,11 @@ matrix:
             - python2.4
             #- python-pip
       before_install:
+        - python-virtualenv
         #- easy_install pip==1.1
         #- pip install setuptools==1.4.2
         #- pip install virtualenv==1.7.2
-        #- python2.4 -m virtualenv virtualenv
+        - python2.4 -m virtualenv virtualenv
         #- source virtualenv/bin/activate
     - os: linux
       python: "3.6"
