@@ -7,7 +7,7 @@ import setuptools
     #requires.append("configparser")
 
 test_requirements=[
-    "unittest2"
+    #"unittest2"
 ]
 
 def custom_test_suite():
