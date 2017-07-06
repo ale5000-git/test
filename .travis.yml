@@ -23,8 +23,8 @@ matrix:
         #- easy_install pip==1.1
         #- pip install setuptools==1.4.2
         #- pip install virtualenv==1.7.2
-        - python2.4 -m virtualenv virtualenv
-        - source virtualenv/bin/activate
+        #- python2.4 -m virtualenv virtualenv
+        #- source virtualenv/bin/activate
     - os: linux
       python: "3.6"
       env: TOXENV=py36
@@ -33,6 +33,8 @@ matrix:
   fast_finish: true
 
 install:
+  - echo $TRAVIS_PYTHON_VERSION
+  - easy_install pip==1.1
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
   #- pip install unittest2
   #- pip install codecov
