@@ -38,9 +38,8 @@ install:
   #- pip install codecov
 
 script:
-  - python --version
-  - python pycompatlayer.py
-  - python3.4 pycompatlayer.py
+  - python2.4 --version
+  - python2.4 pycompatlayer.py
   - #if [[ $TOXENV != 'py32' ]]; then coverage run setup.py test; else echo python setup.py test; fi
 
 after_success:
