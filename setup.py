@@ -37,7 +37,7 @@ setuptools.setup(
     platforms=["any"],
     py_modules=["pycompatlayer"],
     tests_require=test_requirements,
-    test_suite="setup.custom_test_suite",
+    #test_suite="setup.custom_test_suite",
 
     classifiers=[
         "Development Status :: 4 - Beta",
