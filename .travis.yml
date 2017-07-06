@@ -41,13 +41,13 @@ matrix:
 install:
   #- easy_install pip==1.1
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
-  - pip install unittest2
+  ##- pip install unittest2
   #- pip install codecov
 
 script:
   - echo $TRAVIS_PYTHON_VERSION
   - python -V
-  - /home/travis/virtualenv/python3.6.1/bin/python -V
+  - /home/travis/virtualenv/python2.4/bin/python -V
   #- python2.4 pycompatlayer.py
   #- if [[ $TOXENV != 'py32' ]]; then coverage run setup.py test; else echo python setup.py test; fi
 
