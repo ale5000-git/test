@@ -26,8 +26,8 @@ matrix:
         #- pip install virtualenv==1.7.2
         #- python2.4 -m virtualenv virtualenv
         #- source virtualenv/bin/activate
-        - virtualenv virtualenv
-        - virtualenv -p /usr/bin/python2.4 virtualenv
+        - virtualenv ~/virtualenv/python2.4
+        - virtualenv -p /usr/bin/python2.4 ~/virtualenv/python2.4
         - source ~/virtualenv/python2.4/bin/activate
         #- source virtualenv/bin/activate
         - export TRAVIS_PYTHON_VERSION=2.4
