@@ -22,8 +22,8 @@ def custom_test_suite():
             import unittest
     except ImportError:
         import unittest
-    #return unittest.TestLoader().discover("tests", pattern="*_test.py")
-    return unittest.TestLoader()
+    return unittest.TestLoader().discover("tests", pattern="*_test.py")
+
 
 setuptools.setup(
     zip_safe=True,
@@ -38,7 +38,7 @@ setuptools.setup(
     platforms=["any"],
     py_modules=["pycompatlayer"],
     tests_require=test_requirements,
-    test_suite="setup.custom_test_suite",
+    test_suite="tests",
 
     classifiers=[
         "Development Status :: 4 - Beta",
