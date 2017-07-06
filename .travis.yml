@@ -18,9 +18,10 @@ matrix:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages:
             - python2.4
-            - python-pip
+            #- python-pip
       before_install:
         #- easy_install pip==1.1
+        - pip install setuptools=1.4.2
         - pip install virtualenv==1.7.2
         - python -m virtualenv virtualenv
         - source virtualenv/bin/activate
@@ -48,4 +49,4 @@ deploy:
   file: LICENSE
   on:
     repo: ale5000-git/test
-    condition: $TRAVIS_PYTHON_VERSION = "3.6"
+    condition: $TRAVIS_PYTHON_VERSION = "3.7"
