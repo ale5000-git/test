@@ -3,7 +3,7 @@
 echo Installing codecov...
 pip install codecov
 
-if [[ $TRAVIS_PYTHON_VERSION == '3.2' ]]; then
+if [[ $TRAVIS_PYTHON_VERSION == '3.2_' ]]; then
   echo Testing...
   python setup.py test
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
