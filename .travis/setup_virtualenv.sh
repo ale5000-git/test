@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 
 virtualenv "~/virtualenv/python$1"
 virtualenv -p "/usr/bin/python$1" "~/virtualenv/python$1"
