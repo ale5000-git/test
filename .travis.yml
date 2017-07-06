@@ -18,6 +18,7 @@ matrix:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages: python2.4
       before_install:
+        - pip install pip==1.1
         - pip install virtualenv==1.7.2
         - python -m virtualenv virtualenv
         - source virtualenv/bin/activate
