@@ -50,7 +50,7 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: ${TEST_TOKEN}
+  api_key: $TEST_TOKEN
   file: LICENSE
   on:
     repo: ale5000-git/test
