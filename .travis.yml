@@ -15,7 +15,6 @@ addons:
 matrix:
   include:
     - os: linux
-      python: "2.4"
       env: TOXENV=py24
       addons:
         apt:
