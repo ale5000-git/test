@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 
 if [[ $TRAVIS_PYTHON_VERSION == '3.2' ]]; then
   echo Run testing...
