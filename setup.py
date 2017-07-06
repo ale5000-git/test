@@ -10,7 +10,7 @@ test_requirements=[
     "unittest2"
 ]
 
-def custom_test_suite_():
+def custom_test_suite():
     import sys
 
     try:
