@@ -16,6 +16,7 @@ matrix:
           sources:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages: python2.4
+      before_install: source ~/virtualenv/python2.4/bin/activate
     - os: linux
       python: "3.6"
       env: TOXENV=py36
