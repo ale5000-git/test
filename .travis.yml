@@ -21,7 +21,6 @@ matrix:
             - python-virtualenv
       before_install:
         #- easy_install pip==1.1
-        - pip install setuptools==1.4.2
         #- pip install virtualenv==1.7.2
         #- python2.4 -m virtualenv virtualenv
         #- source virtualenv/bin/activate
@@ -31,6 +30,8 @@ matrix:
         - source ~/virtualenv/python2.4/bin/activate
         #- source virtualenv/bin/activate
         - export TRAVIS_PYTHON_VERSION=2.4
+      install:
+        - pip install setuptools==1.4.2
     - os: linux
       python: "3.6"
       env: TOXENV=py36
