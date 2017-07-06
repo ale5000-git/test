@@ -10,6 +10,7 @@ env:
 matrix:
   include:
     - os: linux
+      env: Python='2.4'
       language: generic
       addons:
         apt:
@@ -25,7 +26,7 @@ matrix:
         - source ~/virtualenv/python2.4/bin/activate
         - export TRAVIS_PYTHON_VERSION=2.4
     - os: linux
-      python: "3.6"
+      python: '3.6'
     - os: linux
       python: pypi3
   allow_failures:
@@ -42,8 +43,7 @@ script:
   - echo $TRAVIS_PYTHON_VERSION
   - python -V
   - pip -V
-  - python setup.py test
-  - if [[ $TRAVIS_PYTHON_VERSION != '3.2' ]]; then coverage run setup.py test; else echo python setup.py test; fi
+  - .travis/run_coverage.sh 'pycompatlayer.py'
 
 after_success:
   #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
