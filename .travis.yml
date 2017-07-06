@@ -7,17 +7,13 @@ git:
 env:
   global: TERM=dumb
 
-addons:
-  apt:
-    sources:
-      - sourceline: 'ppa:fkrull/deadsnakes'
-
 matrix:
   include:
     - os: linux
       env: TOXENV=py24
       addons:
         apt:
+          sources: sourceline: 'ppa:fkrull/deadsnakes'
           packages: python2.4
     - os: linux
       python: "3.6"
