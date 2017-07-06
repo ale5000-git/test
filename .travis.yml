@@ -16,6 +16,11 @@ matrix:
     - os: osx
   fast_finish: true
 
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:fkrull/deadsnakes'
+
 install:
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
   - pip install unittest2
