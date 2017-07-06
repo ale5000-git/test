@@ -18,9 +18,9 @@ matrix:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages:
             - python2.4
+            - python-virtualenv
             #- python-pip
       before_install:
-        - python-virtualenv
         #- easy_install pip==1.1
         #- pip install setuptools==1.4.2
         #- pip install virtualenv==1.7.2
