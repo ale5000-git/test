@@ -11,7 +11,7 @@ elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
 fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  pip install unittest2==0.6.0 || exit 1
+  pip install unittest2==0.5.1 || exit 1
 else
   pip install unittest2 || exit 1
   pip install codecov || exit 1
