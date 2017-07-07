@@ -14,7 +14,9 @@ easy_install --version
 
 easy_install --version
 
-easy_install pip==1.4.2 || exit 1
+pip install pip==1.1 || exit 1
+
+easy_install pip==1.1 || exit 1
 
 easy_install --version
 
