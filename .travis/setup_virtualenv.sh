@@ -1,38 +1,18 @@
 #!/bin/bash
 
-virtualenv "~/virtualenv/python$1"
-rm -f "~/virtualenv/python$1/bin/python"
-virtualenv -p "/usr/bin/python$1" "~/virtualenv/python$1"
-source "~/virtualenv/python$1/bin/activate"
+echo 'Virtualenv setup in progress..'
+virtualenv "~/virtualenv/python$1" || exit 1
+rm -f "~/virtualenv/python$1/bin/python" || exit 1
+virtualenv -p "/usr/bin/python$1" "~/virtualenv/python$1" || exit 1
+source "~/virtualenv/python$1/bin/activate" || exit 1
 export TRAVIS_PYTHON_VERSION="$1"
 
-#easy_install --version
+if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
+  echo 'Installing Python Setuptools...'
+  pip install setuptools==0.7.3 > /dev/null 2>&1 || exit 1
+  rm -rf "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
 
-#if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  #pip install distribute==0.6.49 || exit 1
-#fi
+  pip install setuptools==1.4.2 || exit 1
+fi
 
-echo Install setup tools...
-echo _________________________________________________________________________________
-pip install setuptools==0.7.3 > /dev/null 2>&1 || exit 1
-echo _________________________________________________________________________________
-rm -rf "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
-echo _________________________________________________________________________________
-
-echo _________________________________________________________________________________
-easy_install --version
-pip install setuptools==1.4.2 || exit 1
-easy_install --version
-echo _________________________________________________________________________________
-
-
-#echo Install setup tools...
-#pip install -U setuptools==1.4.2 || exit 1
-
-#echo Install setup tools...
-#pip install -U setuptools==0.7.3 || exit 1 # 1.4.2
-
-
-# ==1.4.2
-
-######### python-setuptools (but you can install python-setuptools-deadsnakes)
+echo 'Done.'
