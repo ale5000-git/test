@@ -7,6 +7,9 @@ class PyCompatLayerTestCase(unittest.TestCase):
 
     def test_fix_all(self):
         print(2**32)
+        import sys
+        if 'maxsize' not in sys:
+            print('dohhhhhhhhhhhhh')
         self.assertTrue(pycompatlayer.fix_all())
 
         # The code is executed twice during the test in some cases,
