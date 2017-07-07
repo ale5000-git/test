@@ -9,5 +9,6 @@ export TRAVIS_PYTHON_VERSION="$1"
 easy_install --version
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  pip install -Iv setuptools==1.4.2 || exit 1
+  pip install -U setuptools || exit 1
 fi
+# ==1.4.2
