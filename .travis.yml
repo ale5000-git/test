@@ -33,12 +33,13 @@ matrix:
 install:
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
   - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then pip install unittest2; fi
+  - .travis/setup_codecov.sh
+
+script:
   - .travis/run_codecov.sh 'pycompatlayer.py'
 
-#script:
-  #- echo $TRAVIS_PYTHON_VERSION
-
 after_success:
+  # Upload result
   - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then codecov; fi
 
 deploy:
