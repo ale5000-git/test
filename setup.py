@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """Setup for PyCompatLayer (The compatibility layer for Python)."""
 
 import setuptools
@@ -6,7 +7,7 @@ import setuptools
 #if sys.version_info <= (3, 2):
     #requires.append("configparser")
 
-test_requirements=[
+test_requirements = [
     "unittest2"
 ]
 
