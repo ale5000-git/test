@@ -12,3 +12,5 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   pip install distribute==0.6.49 || exit 1
 fi
 # ==1.4.2
+
+######### python-setuptools (but you can install python-setuptools-deadsnakes)
