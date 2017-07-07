@@ -8,12 +8,13 @@ export TRAVIS_PYTHON_VERSION="$1"
 
 easy_install --version
 
-#if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  #pip install distribute==0.6.49 || exit 1
-#fi
+if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
+  pip install distribute==0.6.49 || exit 1
+fi
 
+easy_install --version
 
-
+pip install -U distribute || exit 1
 
 # ==1.4.2
 
