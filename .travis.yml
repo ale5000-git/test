@@ -31,16 +31,14 @@ matrix:
   fast_finish: true
 
 install:
-  #- easy_install pip==1.1
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
-  #- pip install unittest2
-
-script:
-  - echo $TRAVIS_PYTHON_VERSION
+  - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then pip install unittest2; fi
   - .travis/run_codecov.sh 'pycompatlayer.py'
 
+#script:
+  #- echo $TRAVIS_PYTHON_VERSION
+
 after_success:
-  #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
   - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then codecov; fi
 
 deploy:
