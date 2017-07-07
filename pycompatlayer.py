@@ -143,10 +143,7 @@ def fix_subprocess(override_debug=False, override_exception=False):
             self.stderr = stderr
 
     if "CalledProcessError" not in subprocess.__dict__:
-        print_("dohhhhhh")
         subprocess.CalledProcessError = CalledProcessError
-    else:
-        print_("okkkkk")
 
     class ExtCalledProcessError(subprocess.CalledProcessError):
         """Raised when a process run by check_call() or check_output()
