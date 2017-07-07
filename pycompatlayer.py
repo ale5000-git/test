@@ -134,7 +134,7 @@ def fix_subprocess(override_debug=False, override_exception=False):
     class DummyException(Exception):
         pass
 
-    if CalledProcessError in subprocess:
+    if "CalledProcessError" in subprocess:
         print_("okkkkk")
     else:
         print_("dohhhhhh")
