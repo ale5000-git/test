@@ -6,6 +6,7 @@ class PyCompatLayerTestCase(unittest.TestCase):
     """Tests for `pycompatlayer.py`."""
 
     def test_fix_all(self):
+        print(2**32)
         self.assertTrue(pycompatlayer.fix_all())
 
         # The code is executed twice during the test in some cases,
