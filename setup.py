@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """Setup for PyCompatLayer (The compatibility layer for Python)."""
 
 import setuptools
@@ -6,10 +7,8 @@ import setuptools
 #if sys.version_info <= (3, 2):
     #requires.append("configparser")
 
-test_requirements=[
+test_requirements = [
     "unittest2"
-    #"setuptools==29.0.1",
-    #"unittest2;python_version<'3.2'",
 ]
 
 def custom_test_suite():
@@ -23,6 +22,7 @@ def custom_test_suite():
     except ImportError:
         import unittest
     return unittest.TestLoader().discover("tests", pattern="*_test.py")
+
 
 setuptools.setup(
     zip_safe=True,

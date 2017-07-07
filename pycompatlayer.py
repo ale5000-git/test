@@ -53,6 +53,14 @@ def fix_base(fix_environ):
     if fix_environ and sys.platform == "linux-android":
         _fix_android_environ()
 
+    if 'maxsize' not in sys.__dict__:
+        sys.maxsize = 2147483647  # Assume this if not known (for now)
+
+    # Useful custom variables
+    sys.python_bits = 32
+    if sys.maxsize > 2**32:
+        sys.python_bits = 64
+
 
 def fix_builtins(override_debug=False):
     """Activate the builtins compatibility."""
@@ -130,6 +138,20 @@ def fix_builtins(override_debug=False):
 def fix_subprocess(override_debug=False, override_exception=False):
     """Activate the subprocess compatibility."""
     import subprocess
+
+    class CalledProcessError(Exception):
+        """Raised when a process run by check_call() or check_output()
+        returns a non-zero exit status."""
+
+        def __init__(self, returncode, cmd, output=None, stderr=None):
+            self.returncode = returncode
+            self.cmd = cmd
+            self.output = output
+            self.stdout = output
+            self.stderr = stderr
+
+    if "CalledProcessError" not in subprocess.__dict__:
+        subprocess.CalledProcessError = CalledProcessError
 
     class ExtCalledProcessError(subprocess.CalledProcessError):
         """Raised when a process run by check_call() or check_output()

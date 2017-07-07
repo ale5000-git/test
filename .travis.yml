@@ -9,48 +9,37 @@ env:
 
 matrix:
   include:
-  - os: linux
-    python: '2.6'
-    env: TOXENV=py26
-  - os: linux
-    python: '2.7'
-    env: TOXENV=py27
-  - os: linux
-    python: '3.2'
-    env: TOXENV=py32
-  - os: linux
-    python: '3.3'
-    env: TOXENV=py33
-  - os: linux
-    python: nightly
-    env: TOXENV=py-nightly
-  - os: linux
-    python: pypy
-    env: TOXENV=pypy
-  - os: linux
-    python: pypy3
-    env: TOXENV=pypy3
-  - os: osx
-    language: generic
-    env: TOXENV=py-default
+    - os: linux
+      env: Python=2.4
+      language: generic
+      addons:
+        apt:
+          sources:
+            - sourceline: 'ppa:fkrull/deadsnakes'
+          packages:
+            - python2.4
+            - python-virtualenv
+      before_install: . .travis/setup_virtualenv.sh '2.4'
+    - os: linux
+      python: '3.6'
   allow_failures:
-  - os: osx
+    - os: osx
   fast_finish: true
-install:
-- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1;
-  else pip install -U setuptools; fi
-- pip install codecov
-script:
-- if [[ $TOXENV != 'py32' ]]; then echo Running Coverage...; coverage run setup.py
-  test; else echo Running script...; python pycompatlayer.py; fi
-after_success:
-#- if [[ $TOXENV != 'py32' ]]; then codecov; fi
 
-deploy:
-  provider: releases
-  api_key:
-    secure: ${TEST_TOKEN}
-  file: LICENSE
-  on:
-    repo: ale5000-git/test
-    condition: $TRAVIS_PYTHON_VERSION = "3.3"
+install:
+  - .travis/setup_dependencies.sh
+
+script:
+  - .travis/run_codecov.sh 'pycompatlayer.py'
+
+after_success:
+  # Upload results
+  #- if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then codecov; else bash <(curl -s https://codecov.io/bash); fi
+
+#deploy:
+  #provider: releases
+  #api_key: $TEST_TOKEN
+  #file: LICENSE
+  #on:
+    #repo: ale5000-git/test
+    #condition: $TRAVIS_PYTHON_VERSION = "3.6"
