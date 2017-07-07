@@ -41,6 +41,7 @@ script:
 
 after_success:
   #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
+  - codecov
 
 deploy:
   provider: releases
