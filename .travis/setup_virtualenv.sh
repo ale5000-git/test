@@ -6,6 +6,8 @@ virtualenv -p "/usr/bin/python$1" "~/virtualenv/python$1"
 source "~/virtualenv/python$1/bin/activate"
 export TRAVIS_PYTHON_VERSION="$1"
 
+easy_install --version
+
 if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  pip install -Iv setuptools==1.4.2
+  pip install -Iv setuptools==1.4.2 || exit 1
 fi
