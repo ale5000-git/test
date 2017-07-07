@@ -16,7 +16,8 @@ easy_install --version
 
 echo Install setup tools...
 easy_install -U setuptools==0.7.3 || exit 1
-rm -r "~/virtualenv/python$1/lib/python2.4/site-packages/distribute-0.6.24-py2.4.egg"
+rm -r "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"*
+pip uninstall distribute
 easy_install --version
 
 echo Install setup tools...
