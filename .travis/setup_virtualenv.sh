@@ -17,7 +17,7 @@ echo ___________________________________________________________________________
 #easy_install --version
 #pip install setuptools==0.7.3 #> /dev/null 2>&1 || exit 1
 #easy_install --version
-pip install --upgrade distribute
+pip install distribute==0.6.49
 echo _________________________________________________________________________________
 #easy_install --version
 rm -r "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
