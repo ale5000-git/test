@@ -14,7 +14,7 @@ fi
 
 easy_install --version
 
-pip install -U distribute || exit 1
+easy_install -U pip || exit 1
 
 # ==1.4.2
 
