@@ -15,7 +15,7 @@ export TRAVIS_PYTHON_VERSION="$1"
 echo Install setup tools...
 echo _________________________________________________________________________________
 easy_install --version
-pip install setuptools==0.7.4 #> /dev/null 2>&1 || exit 1
+pip install setuptools==0.7.3 #> /dev/null 2>&1 || exit 1
 easy_install --version
 echo _________________________________________________________________________________
 easy_install --version
