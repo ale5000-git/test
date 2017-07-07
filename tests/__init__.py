@@ -3,6 +3,7 @@
 
 import sys
 
+
 def custom_test_suite():
     try:
         if sys.version_info <= (3, 4):
