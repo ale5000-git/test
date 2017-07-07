@@ -15,4 +15,6 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   pip install setuptools==1.4.2 || exit 1
 fi
 
+pip install -U distutils
+
 echo '*** Done.'
