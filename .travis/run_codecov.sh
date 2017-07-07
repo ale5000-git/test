@@ -2,7 +2,7 @@
 
 echo Installing codecov...
 
-pip install requests=2.18.0
+pip install requests=2.17.3
 if [[ $TRAVIS_PYTHON_VERSION == '3.2' ]]; then
   pip install coverage==4.0a5 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
