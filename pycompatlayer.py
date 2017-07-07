@@ -131,7 +131,8 @@ def fix_subprocess(override_debug=False, override_exception=False):
     """Activate the subprocess compatibility."""
     import subprocess
 
-    class DummyException(Exception)
+    class DummyException(Exception):
+        pass
 
     if subprocess.CalledProcessError is None:
         print_("okkkkk")
