@@ -14,13 +14,11 @@ export TRAVIS_PYTHON_VERSION="$1"
 
 echo Install setup tools...
 echo _________________________________________________________________________________
-#easy_install --version
-#pip install setuptools==0.7.3 #> /dev/null 2>&1 || exit 1
-#easy_install --version
-pip install distribute==0.6.49
+rm -f "~/virtualenv/python$1/lib/python$1/site-packages/setuptools/tests/test_easy_install.py
+pip install setuptools==0.7.3 || exit 1
 echo _________________________________________________________________________________
 #easy_install --version
-rm -r "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
+rm -rf "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
 easy_install --version
 echo _________________________________________________________________________________
 
