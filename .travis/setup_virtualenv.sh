@@ -14,9 +14,13 @@ easy_install --version
 
 easy_install --version
 
-pip install pip==1.1 || exit 1
+echo Install pip...
+pip install -U pip==1.1 || exit 1
 
-easy_install pip==1.1 || exit 1
+echo Install setup tools...
+pip install -Usetuptools==1.4.2 || exit 1
+
+#easy_install pip==1.1 || exit 1
 
 easy_install --version
 
