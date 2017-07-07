@@ -30,7 +30,8 @@ matrix:
 
 install:
   #- if [[ $TOXENV == 'py32' || $TOXENV == 'pypy3' ]]; then pip install setuptools==29.0.1; else pip install -U setuptools; fi
-  - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then pip install unittest2; fi
+  #- if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then pip install unittest2; fi
+  - pip install unittest2
   - .travis/setup_codecov.sh
 
 script:
