@@ -7,5 +7,5 @@ source "~/virtualenv/python$1/bin/activate"
 export TRAVIS_PYTHON_VERSION="$1"
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  pip install setuptools==1.4.2
+  pip install -Iv setuptools==1.4.2
 fi

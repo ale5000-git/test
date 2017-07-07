@@ -22,10 +22,10 @@ matrix:
       before_install: . .travis/setup_virtualenv.sh '2.4'
     - os: linux
       python: '3.2'
-    - os: linux
-      python: '3.6'
-    - os: linux
-      python: pypy3
+    #- os: linux
+      #python: '3.6'
+    #- os: linux
+      #python: pypy3
   allow_failures:
     - os: osx
   fast_finish: true
@@ -37,11 +37,11 @@ install:
 
 script:
   - echo $TRAVIS_PYTHON_VERSION
-  - python -V
   - .travis/run_codecov.sh 'pycompatlayer.py'
 
 after_success:
   #- if [[ $TOXENV != 'py32' ]]; then codecov; fi
+  - codecov
 
 deploy:
   provider: releases
