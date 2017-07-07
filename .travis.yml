@@ -37,7 +37,8 @@ script:
 
 after_success:
   # Upload result
-  - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then codecov; else bash <(curl -s https://codecov.io/bash) || echo "ERROR: Codecov did not collect coverage reports"; fi
+  - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then codecov; else bash <(curl -s https://codecov.io/bash); fi
+# || echo 'ERROR: Codecov did not collect coverage reports'
 
 deploy:
   provider: releases
