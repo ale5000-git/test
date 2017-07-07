@@ -26,6 +26,10 @@ matrix:
       #python: '3.6'
     #- os: linux
       #python: pypy3
+    - os: linux
+      python: "pypy-5.8.0"
+    - os: linux
+      python: "pypy3-5.8.0"
   allow_failures:
     - os: osx
   fast_finish: true
