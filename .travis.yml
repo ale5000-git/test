@@ -36,8 +36,8 @@ script:
   - .travis/run_codecov.sh 'pycompatlayer.py'
 
 after_success:
-  # Upload result
-  - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then codecov; else bash <(curl -s https://codecov.io/bash) || echo 'ERROR: Codecov did not collect coverage reports.'; fi
+  # Upload results
+  - if [[ $TRAVIS_PYTHON_VERSION != '2.4' ]]; then codecov; else bash <(curl -s https://codecov.io/bash); fi
 
 deploy:
   provider: releases
