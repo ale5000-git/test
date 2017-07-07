@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo '*** Virtualenv setup in progress...'
+echo '*** Python Virtualenv setup in progress...'
 virtualenv "~/virtualenv/python$1" || exit 1
 rm -f "~/virtualenv/python$1/bin/python" || exit 1
 virtualenv -p "/usr/bin/python$1" "~/virtualenv/python$1" || exit 1
