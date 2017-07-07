@@ -15,9 +15,9 @@ easy_install --version
 easy_install --version
 
 echo Install setup tools...
-pip install -U setuptools==1.4.2 || exit 1
-
-#easy_install pip==1.1 || exit 1
+easy_install setuptools==1.4.2 || exit 1
+echo Install setup tools...
+pip install setuptools==1.4.2 || exit 1
 
 easy_install --version
 
