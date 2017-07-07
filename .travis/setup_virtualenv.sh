@@ -14,19 +14,20 @@ export TRAVIS_PYTHON_VERSION="$1"
 
 easy_install --version
 
+echo Install setup tools...
+easy_install -U setuptools==0.7.3 || exit 1
+easy_install --version
+
+echo Install setup tools...
+pip install -U setuptools==1.4.2 || exit 1
+easy_install --version
+
 #echo Install setup tools...
-#easy_install -U setuptools==0.7.2 || exit 1
-echo Install setup tools...
-pip install -U setuptools==0.7.3 || exit 1
-pip uninstall distribute || exit 1
-echo Install setup tools...
-pip install -U setuptools==0.7.4 || exit 1
 #pip install -U setuptools==1.4.2 || exit 1
 
 #echo Install setup tools...
 #pip install -U setuptools==0.7.3 || exit 1 # 1.4.2
 
-easy_install --version
 
 # ==1.4.2
 
