@@ -132,12 +132,19 @@ def fix_subprocess(override_debug=False, override_exception=False):
     import subprocess
 
     class CalledProcessError(Exception):
-        pass
+        """Raised when a process run by check_call() or check_output()
+        returns a non-zero exit status."""
+
+        def __init__(self, returncode, cmd, output=None, stderr=None):
+            self.returncode = returncode
+            self.cmd = cmd
+            self.output = output
+            self.stdout = output
+            self.stderr = stderr
 
     if "CalledProcessError" not in subprocess.__dict__:
         print_("dohhhhhh")
         subprocess.CalledProcessError = CalledProcessError
-
     else:
         print_("okkkkk")
 
