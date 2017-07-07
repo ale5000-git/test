@@ -14,7 +14,7 @@ export TRAVIS_PYTHON_VERSION="$1"
 
 echo Install setup tools...
 echo _________________________________________________________________________________
-rm -f "~/virtualenv/python$1/lib/python$1/site-packages/setuptools/tests/test_easy_install.py
+rm -f "~/virtualenv/python$1/lib/python$1/site-packages/setuptools/tests/test_easy_install.py"
 pip install setuptools==0.7.3 || exit 1
 echo _________________________________________________________________________________
 #easy_install --version
