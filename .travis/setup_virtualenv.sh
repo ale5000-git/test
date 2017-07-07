@@ -15,9 +15,6 @@ easy_install --version
 easy_install --version
 
 echo Install setup tools...
-easy_install -U easy_install || exit 1
-
-echo Install setup tools...
 easy_install -U setuptools==1.4.2 || exit 1
 
 echo Install setup tools...
