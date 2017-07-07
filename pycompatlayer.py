@@ -131,14 +131,15 @@ def fix_subprocess(override_debug=False, override_exception=False):
     """Activate the subprocess compatibility."""
     import subprocess
 
-    class DummyException(Exception):
+    class CalledProcessError(Exception):
         pass
 
-    if "CalledProcessError" in subprocess.__dict__:
-        print_("okkkkk")
-    else:
+    if "CalledProcessError" not in subprocess.__dict__:
         print_("dohhhhhh")
-    subprocess.CalledProcessError = DummyException
+        subprocess.CalledProcessError = CalledProcessError
+
+    else:
+        print_("okkkkk")
 
     class ExtCalledProcessError(subprocess.CalledProcessError):
         """Raised when a process run by check_call() or check_output()
