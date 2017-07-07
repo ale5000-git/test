@@ -6,9 +6,9 @@ class PyCompatLayerTestCase(unittest.TestCase):
     """Tests for `pycompatlayer.py`."""
 
     def test_fix_all(self):
-        print(2**32)
+        print(sys.maxint)
         import sys
-        if 'maxsize' not in sys:
+        if 'maxsize' not in sys.__dict__:
             print('dohhhhhhhhhhhhh')
         self.assertTrue(pycompatlayer.fix_all())
 
