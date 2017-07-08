@@ -15,7 +15,7 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; the
   easy_install 'https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz' || exit 1
 
   echo '*** Python - Installing SSL...'
-  easy_install install ssl
+  easy_install 'https://pypi.python.org/packages/source/s/ssl/ssl-1.16.tar.gz' || exit 1
   pip uninstall ssl
 
   echo '*** Python - Installing Pip...'
