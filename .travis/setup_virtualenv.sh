@@ -8,7 +8,8 @@ source "~/virtualenv/python$1/bin/activate" || exit 1
 export TRAVIS_PYTHON_VERSION="$1"
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  pip install pip==1.2
+  echo '*** Installing Python Pip...'
+  pip install pip==1.1
   echo '*** Installing Python Setuptools...'
   pip install setuptools==0.7.3 > /dev/null 2>&1 || exit 1
   rm -rf "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
