@@ -11,26 +11,23 @@ export TRAVIS_PYTHON_VERSION="$1"
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Installing Python Setuptools...'
   easy_install 'http://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz' || exit 1
-  easy_install --version
-  easy_install distribute==0.7.3 || exit 1
+  rm -rf "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
   easy_install 'http://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz' || exit 1
   easy_install --version
 
   #echo '*** Installing Python Pip...'
   #easy_install pip==1.3.1 || exit 1
 
-  #rm -r "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
-  easy_install --version
+
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Installing Python Setuptools...'
   easy_install 'http://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz' || exit 1
-  easy_install --version
-  easy_install distribute==0.7.3 || exit 1
+  rm -rf "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
   easy_install 'http://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz' || exit 1
   easy_install --version
 
-  echo '*** Installing Python Pip...'
-  pip install pip==1.1 || exit 1
+  #echo '*** Installing Python Pip...'
+  #pip install pip==1.1 || exit 1
 
   echo '*** Installing Python Setuptools...'
   #pip install setuptools==0.7.3 > /dev/null 2>&1 || exit 1
