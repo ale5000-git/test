@@ -10,7 +10,7 @@ export TRAVIS_PYTHON_VERSION="$1"
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Installing Python Pip...'
-  pip install pip==1.4 || exit 1
+  pip install pip==1.3.1 || exit 1
 
   #echo '*** Installing Python Setuptools...'
   #pip install setuptools==0.7.3 > /dev/null 2>&1 || exit 1
