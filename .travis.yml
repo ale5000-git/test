@@ -18,8 +18,8 @@ matrix:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages:
             - python2.4
+            - python2.4-dev
             - python-virtualenv
-            - python-dev
       before_install: . .travis/setup_virtualenv.sh '2.4'
     - os: linux
       env: Python=2.5
@@ -30,8 +30,8 @@ matrix:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages:
             - python2.5
+            - python2.5-dev
             - python-virtualenv
-            - python-dev
       before_install: . .travis/setup_virtualenv.sh '2.5'
     - os: linux
       python: '3.6'
