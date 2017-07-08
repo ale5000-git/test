@@ -11,7 +11,7 @@ export TRAVIS_PYTHON_VERSION="$1"
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Installing...'
   easy_install --version
-  easy_install setuptools==2.0 || exit 1
+  easy_install setuptools==1.4.2 || exit 1
   easy_install --version
   echo '*** Installing Python Pip...'
   easy_install pip==1.3.1 || exit 1
