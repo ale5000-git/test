@@ -19,7 +19,9 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; the
   #pip install setuptools==0.7.3 > /dev/null 2>&1 || exit 1
 
   echo '*** Installing Python Setuptools (part 2)...'
-  pip install setuptools==1.4.2 || exit 1
+  #pip install setuptools==1.4.2 || exit 1
+  easy_install setuptools==1.4.2
+  echo '-------------------------------'
   easy_install --version
 fi
 
