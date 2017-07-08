@@ -12,8 +12,8 @@ else
   :  # Coverage and requests are automatically installed by codecov.
 fi
 
-if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  pip install unittest2==0.5.1 || exit 1
+if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
+  pip install unittest2==0.6.0 || exit 1
 else
   pip install unittest2 || exit 1
   pip install codecov || exit 1
