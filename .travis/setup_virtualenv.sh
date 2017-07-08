@@ -12,7 +12,7 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Installing Python Setuptools...'
   easy_install 'http://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz' || exit 1
   easy_install --version
-  easy_install distribute || exit 1
+  easy_install distribute==0.7.3 || exit 1
   easy_install --version
 
   #echo '*** Installing Python Pip...'
@@ -24,7 +24,7 @@ elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Installing Python Setuptools...'
   easy_install 'http://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz' || exit 1
   easy_install --version
-  easy_install distribute || exit 1
+  easy_install distribute==0.7.3 || exit 1
   easy_install --version
 
   echo '*** Installing Python Pip...'
