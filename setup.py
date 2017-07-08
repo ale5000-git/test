@@ -4,19 +4,9 @@
 
 import setuptools
 
-#if sys.version_info <= (3, 2):
-    #requires.append("configparser")
-
-def custom_test_suite():
-    try:
-        if sys.version_info <= (3, 4):
-            import unittest2 as unittest
-        else:
-            import unittest
-    except ImportError:
-        import unittest
-    return unittest.TestLoader().discover("tests", pattern="*_test.py")
-
+test_requirements = [
+    "unittest2"
+]
 
 setuptools.setup(
     zip_safe=True,
@@ -30,7 +20,8 @@ setuptools.setup(
     license="LGPLv3+",
     platforms=["any"],
     py_modules=["pycompatlayer"],
-    test_suite="setup.custom_test_suite",
+    tests_require=test_requirements,
+    test_suite="tests.custom_test_suite",
 
     classifiers=[
         "Development Status :: 4 - Beta",
