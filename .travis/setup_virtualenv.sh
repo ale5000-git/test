@@ -16,7 +16,7 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   #pip install setuptools==0.7.3 > /dev/null 2>&1 || exit 1
   #rm -rf "~/virtualenv/python$1/lib/python$1/site-packages/distribute-"* || exit 1
 
-  pip install setuptools==2.0 || exit 1
+  pip install --upgrade setuptools==2.0 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Installing Python Pip...'
   pip install pip==1.1 || exit 1
