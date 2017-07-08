@@ -10,20 +10,7 @@ env:
 matrix:
   include:
     - os: linux
-      env: Python=2.4
-      language: generic
-      addons:
-        apt:
-          sources:
-            - sourceline: 'ppa:fkrull/deadsnakes'
-          packages:
-            - python2.4
-            - python-virtualenv
-      before_install: . .travis/setup_virtualenv.sh '2.4'
-    - os: linux
       python: '3.6'
-  allow_failures:
-    - os: osx
   fast_finish: true
 
 install:
