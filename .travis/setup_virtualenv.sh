@@ -16,15 +16,6 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; the
 
   echo '*** Python - Installing Pip...'
   pip install pip==1.1 || exit 1
-
-  echo '*** Python - Installing SSL...'
-  #easy_install 'https://pypi.python.org/packages/source/s/ssl/ssl-1.16.tar.gz' || exit 1
-  pip install ssl || exit 1
-
-  if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
-    echo '*** Python - Updating Pip...'
-    pip install pip==1.3.1 || exit 1
-  fi
 fi
 
 echo '*** Done.'
