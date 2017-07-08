@@ -7,10 +7,6 @@ import setuptools
 #if sys.version_info <= (3, 2):
     #requires.append("configparser")
 
-test_requirements = [
-    "unittest"
-]
-
 def custom_test_suite():
     import unittest
     return unittest.TestLoader().discover("tests", pattern="*_test.py")
@@ -28,7 +24,6 @@ setuptools.setup(
     license="LGPLv3+",
     platforms=["any"],
     py_modules=["pycompatlayer"],
-    tests_require=test_requirements,
     test_suite="setup.custom_test_suite",
 
     classifiers=[
