@@ -8,7 +8,13 @@ import setuptools
     #requires.append("configparser")
 
 def custom_test_suite():
-    import unittest
+    try:
+        if sys.version_info <= (3, 4):
+            import unittest2 as unittest
+        else:
+            import unittest
+    except ImportError:
+        import unittest
     return unittest.TestLoader().discover("tests", pattern="*_test.py")
 
 
