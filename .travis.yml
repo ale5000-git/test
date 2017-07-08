@@ -7,9 +7,10 @@ git:
 env:
   global: TERM=dumb
 
-addons:
-  apt:
-    packages: python-dev
+global:
+  addons:
+    apt:
+      packages: python-dev
 
 matrix:
   include:
