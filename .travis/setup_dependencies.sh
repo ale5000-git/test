@@ -9,7 +9,7 @@ elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   pip install coverage==3.7.1 || exit 1
   #pip install requests==2.7.9 || exit 1 # ?????????????? miss for codecov install
 else
-  :
+  :  # Coverage and requests are automatically installed by codecov.
 fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
