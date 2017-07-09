@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo '*** Python - Virtualenv setup in progress...'
+pip install virtualenv==1.9.1
 virtualenv "~/virtualenv/python$1" || exit 1
 rm -f "~/virtualenv/python$1/bin/python" || exit 1
 virtualenv -p "/usr/bin/python$1" "~/virtualenv/python$1" || exit 1
