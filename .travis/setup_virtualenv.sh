@@ -1,8 +1,11 @@
 #!/bin/bash
 
 if [[ $1 == '2.5' ]]; then
+  ls /usr/bin
   echo '*** Python - Updating Virtualenv...'
-  easy_install-$1 --user virtualenv==1.9.1 || exit 1
+  #easy_install-$1 --user virtualenv==1.9.1 || exit 1
+else
+  exit 1
 fi
 virtualenv --version
 
