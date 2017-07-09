@@ -14,14 +14,13 @@ virtualenv --version
 
 echo '*** Python - Updating Virtualenv...'
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
-  pip install virtualenv==13.1.2 || exit 1
+  easy_install virtualenv==13.1.2 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
-  #easy_install virtualenv==1.9.1 || exit 1
-  pip install virtualenv==1.9.1 || exit 1
+  easy_install virtualenv==1.9.1 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  pip install virtualenv==1.7.2 || exit 1
+  easy_install virtualenv==1.7.2 || exit 1
 else
-  pip install -U virtualenv || exit 1
+  easy_install -U virtualenv || exit 1
 fi
 
 virtualenv --version
