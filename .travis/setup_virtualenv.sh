@@ -2,23 +2,25 @@
 
 if [[ $1 == '2.5' ]]; then
   echo '------------------------------------------'
-  cat /usr/lib/python2.5/site-packages/pep-370-per-user-site-packages.pth
+  find /usr -name easy_install* -type f
+  #cat /usr/lib/python2.5/site-packages/pep-370-per-user-site-packages.pth
   echo '------------------------------------------'
-  cat /usr/lib/python2.5/site-packages/README
-  echo '------------------------------------------'
-  echo '------------------------------------------'
-  ls /usr/lib/python2.5/
+  #cat /usr/lib/python2.5/site-packages/README
   echo '------------------------------------------'
   echo '------------------------------------------'
-  ls python2.5/lib/python2.5/site-packages
+  #ls /usr/lib/python2.5/
   echo '------------------------------------------'
-  ls python2.5/lib/python2.5/dist-packages
+  echo '------------------------------------------'
+  #ls python2.5/lib/python2.5/site-packages
+  echo '------------------------------------------'
+  #ls python2.5/lib/python2.5/dist-packages
   echo '------------------------------------------'
   #mkdir '~/python'
   #cp -p python$1 '~/python/python'
   #export PATH="~/python/python:$PATH"
   echo '*** Python - Updating Virtualenv...'
   #"/usr/lib/python$1/dist-packages/easy_install" --user virtualenv==1.9.1 || exit 1
+  exit 0
 else
   exit 1
 fi
