@@ -20,6 +20,7 @@ matrix:
             - python2.3
             #- python2.3-dev
             - python-virtualenv
+            - python-pip
       before_install: . .travis/setup_virtualenv.sh '2.3'
     - os: linux
       env: Python=2.4
@@ -32,6 +33,7 @@ matrix:
             - python2.4
             - python2.4-dev
             - python-virtualenv=1.7.1.2-1
+            - python-pip
       before_install: . .travis/setup_virtualenv.sh '2.4'
     - os: linux
       env: Python=2.5
@@ -44,6 +46,7 @@ matrix:
             - python2.5
             - python2.5-dev
             - python-virtualenv=1.7.1.2-1
+            - python-pip
       before_install: . .travis/setup_virtualenv.sh '2.5'
     - os: linux
       env: Python=3.1
@@ -56,6 +59,7 @@ matrix:
             - python3.1
             #- python3.1-dev
             - python-virtualenv
+            - python-pip
       before_install: . .travis/setup_virtualenv.sh '3.1'
     - os: linux
       python: '3.6'
