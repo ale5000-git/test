@@ -46,7 +46,7 @@ matrix:
             - python2.5
             - python2.5-dev
             - python-virtualenv=1.7.1.2-1
-            - python-pip
+            - python2.5-pip
       before_install: . .travis/setup_virtualenv.sh '2.5'
     - os: linux
       env: Python=3.1
