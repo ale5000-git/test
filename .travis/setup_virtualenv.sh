@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
+if [[ $1 == '2.5' ]]; then
   echo '*** Python - Updating Virtualenv...'
   easy_install virtualenv==1.9.1 || exit 1
 fi
