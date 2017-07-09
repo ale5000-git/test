@@ -2,7 +2,7 @@
 
 if [[ $1 == '2.5' ]]; then
   echo '*** Python - Updating Virtualenv...'
-  easy_install virtualenv==1.9.1 || exit 1
+  easy_install --user virtualenv==1.9.1 || exit 1
 fi
 
 echo '*** Python - Virtualenv setup in progress...'
