@@ -2,7 +2,7 @@
 
 if [[ $1 == '2.5' ]]; then
   echo '------------------------------------------'
-  ls /usr/lib/python2.5
+  ls /usr/lib/python2.5/easy_install
   echo '------------------------------------------'
   ls /usr/lib/python2.5/dist-packages
   echo '------------------------------------------'
@@ -18,7 +18,7 @@ if [[ $1 == '2.5' ]]; then
   #cp -p python$1 '~/python/python'
   #export PATH="~/python/python:$PATH"
   echo '*** Python - Updating Virtualenv...'
-  "/usr/lib/python$1/dist-packages/easy_install" --user virtualenv==1.9.1 || exit 1
+  #"/usr/lib/python$1/dist-packages/easy_install" --user virtualenv==1.9.1 || exit 1
 else
   exit 1
 fi
