@@ -54,8 +54,8 @@ matrix:
             - sourceline: 'ppa:fkrull/deadsnakes'
           packages:
             - python3.1
-            #- python3.1-dev
-            - python-virtualenv
+            - python3.1-dev
+            - python-virtualenv=1.7.1.2-1
       before_install: . .travis/setup_virtualenv.sh '3.1'
     - os: linux
       python: '3.6'
