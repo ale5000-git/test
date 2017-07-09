@@ -1,22 +1,17 @@
 #!/bin/bash
 
-#find /usr -name easy_install* -type f
-virtualenv --version
-
-
 echo '*** Python - Virtualenv setup in progress...'
 virtualenv -p "python$1" --setuptools "~/virtualenv/python$1" || exit 1
 source "~/virtualenv/python$1/bin/activate" || exit 1
 
 export TRAVIS_PYTHON_VERSION="$1"
 
-virtualenv --version
-
 echo '*** Python - Updating Virtualenv...'
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   easy_install virtualenv==13.1.2 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
-  easy_install virtualenv==1.9.1 || exit 1
+  #easy_install virtualenv==1.9.1 || exit 1
+  easy_install virtualenv==1.6.4 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   easy_install virtualenv==1.7.2 || exit 1
 else
