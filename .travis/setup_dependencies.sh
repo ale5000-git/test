@@ -13,7 +13,7 @@ fi
 if [[ $TRAVIS_PYTHON_VERSION == '3.2' || $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   pip install coverage==4.0a5 || exit 1
   pip install requests==2.10.0 || exit 1
-elif [[ $TRAVIS_PYTHON_VERSION == '2.4' || $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
+elif [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   pip install coverage==3.7.1 || exit 1
   #pip install requests==2.7.9 || exit 1 # ?????????????? miss for codecov install
 else
