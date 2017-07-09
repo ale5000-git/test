@@ -6,7 +6,13 @@ source "~/virtualenv/python$1/bin/activate" || exit 1
 
 export TRAVIS_PYTHON_VERSION="$1"
 
-if [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
+easy_install virtualenv==1.6.4
+virtualenv --version
+
+if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
+  echo '*** Python - Updating Setuptools...'
+  pip install setuptools==1.4.2 || exit 1
+elif [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Python - Updating Setuptools...'
   pip install setuptools==1.4.2 || exit 1
 
