@@ -2,19 +2,13 @@
 
 if [[ $1 == '2.5' ]]; then
   echo '------------------------------------------'
+  ls /usr/lib/python2.5
+  echo '------------------------------------------'
   ls /usr/lib/python2.5/dist-packages
   echo '------------------------------------------'
   ls /usr/lib/python2.5/site-packages
   echo '------------------------------------------'
-  ls /usr/bin/python2.5
   echo '------------------------------------------'
-  ls /usr/python2.5
-  echo '------------------------------------------'
-  ls /usr/python2.5/lib/python2.5
-  echo '------------------------------------------'
-  ls /usr/python2.5/lib/python2.5/site-packages
-  echo '------------------------------------------'
-  ls /usr/python2.5/lib/python2.5/dist-packages
   echo '------------------------------------------'
   ls python2.5/lib/python2.5/site-packages
   echo '------------------------------------------'
