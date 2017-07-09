@@ -2,12 +2,12 @@
 
 if [[ $1 == '2.5' ]]; then
   echo '------------------------------------------'
-  ls /usr/lib/python2.5/easy_install
+  cat /usr/lib/python2.5/site-packages/pep-370-per-user-site-packages.pth
   echo '------------------------------------------'
-  ls /usr/lib/python2.5/dist-packages
+  cat /usr/lib/python2.5/site-packages/README
   echo '------------------------------------------'
-  ls /usr/lib/python2.5/site-packages
   echo '------------------------------------------'
+  ls /usr/lib/python2.5/
   echo '------------------------------------------'
   echo '------------------------------------------'
   ls python2.5/lib/python2.5/site-packages
