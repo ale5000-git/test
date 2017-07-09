@@ -8,7 +8,7 @@ if [[ $1 == '2.5' ]]; then
   #cat /usr/lib/python2.5/site-packages/README
   echo '------------------------------------------'
   echo '------------------------------------------'
-  #ls /usr/lib/python2.5/
+  ls /usr/lib/python2.5/
   echo '------------------------------------------'
   echo '------------------------------------------'
   #ls python2.5/lib/python2.5/site-packages
