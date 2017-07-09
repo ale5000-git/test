@@ -1,9 +1,26 @@
 #!/bin/bash
 
 if [[ $1 == '2.5' ]]; then
-  ls /usr/bin
+  echo '------------------------------------------'
+  ls /usr/bin/python2.5
+  echo '------------------------------------------'
+  ls /usr/python2.5
+  echo '------------------------------------------'
+  ls /usr/python2.5/lib/python2.5
+  echo '------------------------------------------'
+  ls /usr/python2.5/lib/python2.5/site-packages
+  echo '------------------------------------------'
+  ls /usr/python2.5/lib/python2.5/dist-packages
+  echo '------------------------------------------'
+  ls python2.5/lib/python2.5/site-packages
+  echo '------------------------------------------'
+  ls python2.5/lib/python2.5/dist-packages
+  echo '------------------------------------------'
+  #mkdir '~/python'
+  #cp -p python$1 '~/python/python'
+  #export PATH="~/python/python:$PATH"
   echo '*** Python - Updating Virtualenv...'
-  #easy_install-$1 --user virtualenv==1.9.1 || exit 1
+  "/usr/lib/python$1/dist-packages/easy_install" --user virtualenv==1.9.1 || exit 1
 else
   exit 1
 fi
