@@ -63,7 +63,9 @@ matrix:
         apt:
           packages:
             - jython
-      before_install: virtualenv -p "jython" "~/virtualenv/python2.7.9"
+      before_install:
+        - pip install virtualenv==1.9.1
+        - virtualenv -p "jython" "~/virtualenv/python2.7.9"
 
     - os: osx
       env: TOXENV=py-default
