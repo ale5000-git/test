@@ -6,12 +6,14 @@ git:
   depth: 1
 
 env:
-  global: TERM=dumb
+  global:
+    TERM=dumb
+    SKIP=false
 
 matrix:
   include:
     - env: Python=2.3
-      env: Skip=true
+      env: SKIP=true
       language: generic
       addons:
         apt:
@@ -80,7 +82,7 @@ matrix:
 
 matrix:
   exclude:
-    - env: Skip=true
+    - env: SKIP=true
 
 install:
   - .travis/setup_dependencies.sh
