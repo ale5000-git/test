@@ -7,13 +7,14 @@ git:
 
 env:
   global:
-    TERM=dumb
-    SKIP=false
+    - TERM=dumb
+    - SKIP=false
 
 matrix:
   include:
-    - env: Python=2.3
-      env: SKIP=true
+    - env:
+      - Python=2.3
+      - SKIP=true
       language: generic
       addons:
         apt:
