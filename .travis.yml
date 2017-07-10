@@ -73,7 +73,7 @@ matrix:
         - source "~/virtualenv/jython/bin/activate"
 
     - os: osx
-      env: Python=default
+      env: Python='default (macOS)'
       language: generic
   exclude:
     - env: Python=2.3
