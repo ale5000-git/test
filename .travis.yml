@@ -80,9 +80,13 @@ matrix:
 matrix:
   exclude:
     - env: Python=2.3
+      language: generic
     - env: Python=2.4
+      language: generic
     - env: Python=2.5
+      language: generic
     - env: Python=3.1
+      language: generic
 
 install:
   - .travis/setup_dependencies.sh
