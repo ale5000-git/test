@@ -64,7 +64,8 @@ matrix:
           packages:
             - jython
       before_install:
-        - pip install virtualenv==1.9.1
+        - easy_install virtualenv==1.9.1
+        - unset JYTHON_HOME
         - virtualenv -p "jython" "~/virtualenv/python2.7.9"
 
     - os: osx
