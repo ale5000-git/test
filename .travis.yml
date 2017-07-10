@@ -58,12 +58,12 @@ matrix:
     - python: '3.6'
 
     - env: Jython=latest
-      python: '3.4'
+      python: '2.7'
       addons:
         apt:
           packages:
             - jython
-      before_install: virtualenv -p "jython" "~/virtualenv/python3.4x"
+      before_install: virtualenv -p "jython" "~/virtualenv/python2.7.9"
 
     - os: osx
       env: TOXENV=py-default
