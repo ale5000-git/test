@@ -65,7 +65,8 @@ matrix:
       before_install:
         - easy_install virtualenv==1.9.1
         - deactivate
-        - virtualenv -p "python$1" --setuptools "~/virtualenv/jython"
+        - virtualenv -p "jython" --setuptools "~/virtualenv/jython"
+        - source "~/virtualenv/jython/bin/activate"
         #- unset JYTHON_HOME
         #- virtualenv -p "jython" "~/virtualenv/python2.7.9"
 
