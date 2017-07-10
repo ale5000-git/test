@@ -12,9 +12,7 @@ env:
 
 matrix:
   include:
-    - env: 
-      - Python=2.3
-      - SKIP=true
+    - env: Python=2.3
       language: generic
       addons:
         apt:
@@ -68,17 +66,20 @@ matrix:
             - jython
       before_install:
         - easy_install virtualenv==1.9.1
+        - unset JYTHON_HOME
         - virtualenv -p "jython" --setuptools "~/virtualenv/jython"
         - deactivate
+        - unset JYTHON_HOME
         - source "~/virtualenv/jython/bin/activate"
-        #- unset JYTHON_HOME
-        #- virtualenv -p "jython" "~/virtualenv/python2.7.9"
 
     - os: osx
       env: Python=default
       language: generic
   exclude:
-    - env: SKIP=true
+    - env: Python=2.3
+    - env: Python=2.4
+    - env: Python=2.5
+    - env: Python=3.1
   allow_failures:
     - os: osx
   fast_finish: true
