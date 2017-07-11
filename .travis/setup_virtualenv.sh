@@ -16,7 +16,6 @@ else
   #easy_install -U virtualenv || exit 1
   VENV_VER='x.x' #################################
 fi
-echo ": $PWD"
 wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
 tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/"
@@ -25,20 +24,14 @@ cd ..
 
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '2.4' ]]; then
-  exit 0
   virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
-  echo ": $PWD"
-  echo "ORIG: $TRAVIS_BUILD_DIR/.travis/lib/subprocess.py"
-  echo "DEST: ~/.local/lib/python$VER/site-packages"
-  cp -pf $TRAVIS_BUILD_DIR/.travis/lib/subprocess.py ~/.local/lib/python$VER/site-packages #|| exit 1
-  ls ~/.local/lib/python$VER/site-packages
-  "python$VER" virtualenv.py -p "python$VER" --setuptools "~/virtualenv/python$VER" #|| exit 1
+  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" ~/.local/lib/python$VER/site-packages #|| exit 1
+  "python$VER" virtualenv.pyc -p "python$VER" --setuptools "~/virtualenv/python$VER" #|| exit 1
 else
-  exit 0
   virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
 fi
-source "~/virtualenv/python$VER/bin/activate" #|| exit 1
+source ~/virtualenv/python$VER/bin/activate #|| exit 1
 
 export TRAVIS_PYTHON_VERSION="$VER"
 
