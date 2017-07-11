@@ -26,6 +26,7 @@ if [[ $VER == '2.4' ]]; then
   exit 0
   virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:test/.travis/lib
   "python$VER" virtualenv.py -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
 else
   exit 0
