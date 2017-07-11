@@ -19,6 +19,8 @@ tar -x -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/" || exit 1
 "python$VER" setup.py install --help #|| exit 1
 echo '----------------------------------------------------------'
+"python$VER" setup.py install --install-base="~/.local"
+echo '----------------------------------------------------------'
 "python$VER" setup.py install --install-lib="~/.local/lib/python$VER/site-packages" --install-scripts="~/.local/bin"
 echo '----------------------------------------------------------'
 echo '----------------------------------------------------------'
