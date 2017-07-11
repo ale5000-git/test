@@ -17,8 +17,9 @@ fi
 wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
 tar -x -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/" || exit 1
-"python$VER" setup.py install || exit 1
+"python$VER" setup.py install #|| exit 1
 
+echo '----------------------------------------------------------'
 virtualenv --version
 
 
