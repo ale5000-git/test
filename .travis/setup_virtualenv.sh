@@ -10,7 +10,8 @@ elif [[ $VER == '2.5' ]]; then
 elif [[ $VER == '2.4' ]]; then
   VENV_VER='1.7.2'
 elif [[ $VER == '2.3' ]]; then
-  VENV_VER='1.3.2'###############
+  VENV_VER='1.3.2'
+  ###############
 else
   #easy_install -U virtualenv || exit 1
   VENV_VER='x.x' #################################
