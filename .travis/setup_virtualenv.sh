@@ -15,10 +15,9 @@ else
 fi
 
 wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
-tar -x -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
+tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/" || exit 1
 "python$VER" setup.py install --prefix="~/.local" || exit 1
-#"python$VER" setup.py install --install-lib="~/.local/lib/python$VER/site-packages" --install-scripts="~/.local/bin"
 
 virtualenv --version
 
@@ -36,10 +35,16 @@ if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   pip install setuptools==19.4 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Python - Updating Setuptools...'
-  pip install setuptools==1.4.2 #|| exit 1
+  #pip install setuptools==1.4.2 #|| exit 1
+fi
 
+if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Updating Pip...'
+  easy_install pip==1.1 || exit 1
   #pip install pip==1.1 || exit 1
+elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
+  echo '*** Python - Updating Pip...'
+  pip install pip==1.1 || exit 1
 fi
 
 echo '*** Done.'
