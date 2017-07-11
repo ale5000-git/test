@@ -24,6 +24,8 @@ cd "virtualenv-${VENV_VER}/" #|| exit 1
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '2.4' ]]; then
   virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
+elif [[ $VER == '2.3' ]]; then
+  "python$VER" -m virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
 else
   virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
 fi
