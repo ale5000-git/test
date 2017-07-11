@@ -21,7 +21,7 @@ wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_
 tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/"
 "python$VER" setup.py install --prefix="~/.local" || exit 1
-#cd ..
+cd ..
 
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '2.4' ]]; then
@@ -29,8 +29,10 @@ if [[ $VER == '2.4' ]]; then
   virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
   echo ": $PWD"
-  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "~/.local/lib/python$VER/site-packages" #|| exit 1
-  ls "~/.local/lib/python$VER/site-packages"
+  echo "ORIG: $TRAVIS_BUILD_DIR/.travis/lib/subprocess.py"
+  echo "DEST: ~/.local/lib/python$VER/site-packages"
+  cp -pf $TRAVIS_BUILD_DIR/.travis/lib/subprocess.py ~/.local/lib/python$VER/site-packages #|| exit 1
+  ls ~/.local/lib/python$VER/site-packages
   "python$VER" virtualenv.py -p "python$VER" --setuptools "~/virtualenv/python$VER" #|| exit 1
 else
   exit 0
