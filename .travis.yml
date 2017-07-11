@@ -43,15 +43,15 @@ matrix:
       before_install: . .travis/setup_virtualenv.sh
     #- python: '3.6'
 
-    - env: Jython=latest
-      python: '2.7'
-      addons:
-        apt:
-          packages:
-            - jython
-      before_install:
+    #- env: Jython=latest
+      #python: '2.7'
+      #addons:
+        #apt:
+          #packages:
+            #- jython
+      #before_install:
         #- easy_install virtualenv==1.9.1
-        - unset JYTHON_HOME
+        #- unset JYTHON_HOME
         #- virtualenv -p "jython" --setuptools "~/virtualenv/jython"
         #- deactivate
         #- unset JYTHON_HOME
