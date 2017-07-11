@@ -2,10 +2,10 @@
 
 if [[ -n "$1" ]]; then
     echo 'NOT Empty'
-    VER="$Python"
+    VER="$1"
 else
     echo 'Empty'
-    VER="$1"
+    VER="$Python"
 fi
 echo $VER
 
