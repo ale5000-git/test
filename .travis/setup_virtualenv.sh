@@ -11,10 +11,10 @@ elif [[ $VER == '2.4' ]]; then
   VENV_VER='1.7.2'
 else
   #easy_install -U virtualenv || exit 1
-  pass
+  VENV_VER='1.1' #################################
 fi
 
-wget "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
+wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
 tar -xv -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/" || exit 1
 "python$VER" setup.py install || exit 1
