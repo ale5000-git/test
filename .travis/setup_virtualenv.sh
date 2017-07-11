@@ -9,21 +9,27 @@ elif [[ $VER == '2.5' ]]; then
   VENV_VER='1.9.1'
 elif [[ $VER == '2.4' ]]; then
   VENV_VER='1.7.2'
+elif [[ $VER == '2.3' ]]; then
+  VENV_VER='1.3.2'###############
 else
   #easy_install -U virtualenv || exit 1
-  VENV_VER='1.1' #################################
+  VENV_VER='x.x' #################################
 fi
 
 wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
 tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/" || exit 1
-"python$VER" setup.py install --prefix="~/.local" || exit 1
+"python$VER" setup.py install --prefix="~/.local" #|| exit 1
 
 virtualenv --version
 
 
 echo '*** Python - Virtualenv setup in progress...'
-virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
+if [[ $VER == '2.4' ]]; then
+  virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
+else
+  virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
+fi
 source "~/virtualenv/python$VER/bin/activate" || exit 1
 
 export TRAVIS_PYTHON_VERSION="$VER"
@@ -40,8 +46,9 @@ fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Updating Pip...'
-  easy_install pip==1.1 || exit 1
-  #pip install pip==1.1 || exit 1
+  easy_install ssl
+  #easy_install pip==1.1 || exit 1
+  pip install pip==1.1 #|| exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Python - Updating Pip...'
   pip install pip==1.1 || exit 1
