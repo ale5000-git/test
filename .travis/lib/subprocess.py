@@ -14,25 +14,6 @@ class CalledProcessError(Exception):
 		self.stdout = output
 		self.stderr = stderr
 
-class ExtCalledProcessError(subprocess.CalledProcessError):
-	"""Raised when a process run by check_call() or check_output()
-	returns a non-zero exit status."""
-
-	def __init__(self, returncode, cmd, output=None, stderr=None):
-		try:
-			super(ExtCalledProcessError, self).__init__(returncode=returncode,
-														cmd=cmd, output=output, stderr=stderr)
-		except TypeError:
-			try:
-				super(ExtCalledProcessError, self).__init__(returncode=returncode,
-															cmd=cmd, output=output)
-			except TypeError:
-				super(ExtCalledProcessError, self).__init__(returncode=returncode,
-															cmd=cmd)
-				self.output = output
-			self.stdout = output
-			self.stderr = stderr
-
 def check(*args, **kwargs):
 	if "stdout" in kwargs:
 		raise ValueError("stdout argument not allowed, "
