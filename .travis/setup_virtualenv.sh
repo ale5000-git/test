@@ -27,13 +27,13 @@ if [[ $VER == '2.4' ]]; then
   exit 0
   virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
-  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "~/.local/lib/python$VER/site-packages/" || exit 1
+  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "~/.local/lib/python$VER/site-packages/subprocess.py" #|| exit 1
   "python$VER" virtualenv.py -p "python$VER" --setuptools "~/virtualenv/python$VER" #|| exit 1
 else
   exit 0
   virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
 fi
-source "~/virtualenv/python$VER/bin/activate" || exit 1
+source "~/virtualenv/python$VER/bin/activate" #|| exit 1
 
 export TRAVIS_PYTHON_VERSION="$VER"
 
