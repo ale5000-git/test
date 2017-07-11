@@ -41,14 +41,14 @@ if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   pip install setuptools==19.4 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' || $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Python - Updating Setuptools...'
-  #pip install setuptools==1.4.2 #|| exit 1
+  pip install setuptools==1.4.2 #|| exit 1
 fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Updating Pip...'
   easy_install ssl==1.15
-  #easy_install pip==1.1 || exit 1
-  pip install pip==1.1 #|| exit 1
+  easy_install pip==1.2.1 || exit 1 # Workaround for missing ssl
+  #pip install pip==1.3.1 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Python - Updating Pip...'
   pip install pip==1.1 || exit 1
