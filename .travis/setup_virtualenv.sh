@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if [[ -z "$1" ]]; then
+if [[ -n "$1" ]]; then
+    echo 'NOT Empty'
+    VER="$Python"
+else
     echo 'Empty'
-    echo "Python = $Python"
-    1="$Python"
-    echo "1 = $1"
+    VER="$1"
 fi
+echo $VER
 
 echo '*** Python - Virtualenv setup in progress...'
 virtualenv -p "python$1" --setuptools "~/virtualenv/python$1" || exit 1
