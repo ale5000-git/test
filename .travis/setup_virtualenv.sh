@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ -z "$1" ]]; then
+    echo 'Empty'
+    echo "Python = $Python"
+    1="$Python"
+    echo "1 = $1"
+fi
+
 echo '*** Python - Virtualenv setup in progress...'
 virtualenv -p "python$1" --setuptools "~/virtualenv/python$1" || exit 1
 source "~/virtualenv/python$1/bin/activate" || exit 1
