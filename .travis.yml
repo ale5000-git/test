@@ -8,7 +8,6 @@ git:
 env:
   global:
     - TERM=dumb
-    - SKIP=false
 
 matrix:
   include:
