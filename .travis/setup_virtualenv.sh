@@ -16,15 +16,15 @@ else
   VENV_VER='x.x' #################################
 fi
 wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" #|| exit 1
-tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
-cd "virtualenv-${VENV_VER}/" || exit 1
+tar -xz -f "virtualenv-${VENV_VER}.tar.gz" #|| exit 1
+cd "virtualenv-${VENV_VER}/" #|| exit 1
 "python$VER" setup.py install --prefix="~/.local" #|| exit 1
 
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '2.4' ]]; then
-  virtualenv -p "python$VER" "~/virtualenv/python$VER" #|| exit 1
+  virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
 else
-  virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" #|| exit 1
+  virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
 fi
 source "~/virtualenv/python$VER/bin/activate" || exit 1
 
@@ -40,7 +40,7 @@ elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   easy_install setuptools==1.4.2 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
   echo '*** Python - Updating Setuptools...'
-  pip install setuptools==1.4.2 #|| exit 1
+  pip install setuptools==1.4.2 || exit 1
 fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
