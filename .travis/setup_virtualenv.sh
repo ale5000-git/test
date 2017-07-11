@@ -2,24 +2,30 @@
 
 if [[ -n "$1" ]]; then VER="$1"; else VER="$Python"; fi
 
+echo '*** Python - Installing Virtualenv...'
+if [[ $VER == '3.1' ]]; then
+  VENV_VER='13.1.2'
+elif [[ $VER == '2.5' ]]; then
+  VENV_VER='1.9.1'
+elif [[ $VER == '2.4' ]]; then
+  VENV_VER='1.7.2'
+else
+  #easy_install -U virtualenv || exit 1
+fi
+
+wget "https: //pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
+tar -xv -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
+cd "virtualenv-${VENV_VER}/" || exit 1
+"python$VER" setup.py install || exit 1
+
+virtualenv --version
+
+
 echo '*** Python - Virtualenv setup in progress...'
 virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
 source "~/virtualenv/python$VER/bin/activate" || exit 1
 
 export TRAVIS_PYTHON_VERSION="$VER"
-
-echo '*** Python - Updating Virtualenv...'
-if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
-  easy_install virtualenv==13.1.2 || exit 1
-elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
-  easy_install virtualenv==1.9.1 || exit 1
-elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
-  easy_install virtualenv==1.7.2 || exit 1
-else
-  easy_install -U virtualenv || exit 1
-fi
-
-virtualenv --version
 
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   echo '*** Python - Updating Setuptools...'
