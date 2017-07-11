@@ -33,7 +33,7 @@ matrix:
             - python2.5
             - python2.5-dev
             - python-virtualenv=1.7.1.2-1
-      before_install: . .travis/setup_virtualenv.sh
+      before_install: . .travis/setup_virtualenv.sh '2.5'
     #- python: '3.6'
 
     - env: Jython=latest
