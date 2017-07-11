@@ -10,8 +10,8 @@ elif [[ $VER == '2.5' ]]; then
 elif [[ $VER == '2.4' ]]; then
   VENV_VER='1.7.2'
 elif [[ $VER == '2.3' ]]; then
-  VENV_VER='1.3.2'
-  ###############
+  VENV_VER='1.3.1'
+  ############### 1.3.2
 else
   #easy_install -U virtualenv || exit 1
   VENV_VER='x.x' #################################
@@ -28,6 +28,7 @@ if [[ $VER == '2.4' ]]; then
   virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
   cp -pf $TRAVIS_BUILD_DIR/.travis/lib/subprocess.py ~/.local/lib/python$VER/site-packages #|| exit 1
+  virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" #|| exit 1
   "python$VER" virtualenv.pyc -p "python$VER" --setuptools "~/virtualenv/python$VER" #|| exit 1
 else
   exit 0
