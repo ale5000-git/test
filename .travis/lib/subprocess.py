@@ -19,7 +19,7 @@ def check(*args, **kwargs):
 		raise ValueError("stdout argument not allowed, "
 						 "it will be overridden.")
 	process = os.popen(*args)
-	echo process.read()
+	print process.read()
 
 def check_call(*args, **kwargs):
 	if "stdout" in kwargs:
@@ -33,4 +33,4 @@ def check_output(*args, **kwargs):
 		raise ValueError("stdout argument not allowed, "
 						 "it will be overridden.")
 	process = os.popen(*args)
-	print process.read()
+	return process.read()
