@@ -235,6 +235,7 @@ self="hi there %s"
 value=13
 print(self % (value,))
 
+val=3.33
 print("The value %.6f is the result" % val)
 
 #print(str("The value {0:.2f} is the result").format2(val))
