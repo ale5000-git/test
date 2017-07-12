@@ -17,12 +17,12 @@ __license__ = "LGPLv3+"
 
 class _Internal:
     class ExtStr(str):
-        def format(self, value):  # Largely incomplete
-            self = self.replace("{:", "%").replace("}", "")
-            return self % (value, )
+        def format(format_spec, value):  # Largely incomplete
+            format_spec = format_spec.replace("{:", "%").replace("}", "")
+            return format_spec % (value, )
 
-        def __format__(self, format_spec):  # Largely incomplete
-            return "%"+format_spec % (self, )
+        def __format__(value, format_spec):  # Largely incomplete
+            return "%"+format_spec % (value, )
 
 
 def set_utf8_default():
@@ -119,7 +119,7 @@ def fix_builtins(override_debug=False):
         return my_list
 
     def _format(value, format_spec):
-        return str(value).__format__(format_spec)
+        return value.__format__(format_spec)
 
     if builtins_dict.get(__name__, False):
         raise RuntimeError(__name__+" already loaded")
@@ -218,24 +218,3 @@ def fix_all(override_debug=False, override_all=False):
     fix_builtins(override_debug)
     fix_subprocess(override_debug, override_all)
     return True
-
-
-
-
-
-fix_all()
-
-val=3.33
-print("The value %.6f is the result" % val)
-
-#print(str("The value {0:.2f} is the result").format2(val))
-#print("The value {0:.2f} is the result".format(val))
-
-print(str("The value {:.6f} is the result").format(val))
-#print("The value {:.6f} is the result".format(val))
-
-print(str)
-#print('1 '+str.format('{:d}', 42))
-print('2 '+str('{:d}').format(42))
-print('3 '+format('13', 's'))
-print('3 '+format(13, 'x'))
