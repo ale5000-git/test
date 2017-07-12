@@ -9,19 +9,20 @@ It is still under development, not all functions are supported.
 
 import sys
 
-__version__ = "0.0.10.dev3"
+__version__ = "0.0.10.dev4"
 __author__ = "ale5000"
 __copyright__ = "Copyright (C) 2016-2017, ale5000"
 __license__ = "LGPLv3+"
 
 
-class ExtStr(str):
-    def format(self, value):
-        self = self.replace("{:", "%").replace("}", "")
-        return self % (value, )
+class _Internal:
+    class ExtStr(str):
+        def format(self, value):  # Largely incomplete
+            self = self.replace("{:", "%").replace("}", "")
+            return self % (value, )
 
-    def __format__(self, format_spec):
-        return "%"+format_spec % (self, )
+        def __format__(self, format_spec):  # Largely incomplete
+            return "%"+format_spec % (self, )
 
 
 def set_utf8_default():
@@ -124,7 +125,7 @@ def fix_builtins(override_debug=False):
         raise RuntimeError(__name__+" already loaded")
 
     if 'format' not in str.__dict__:
-        override_dict["str"] = ExtStr
+        override_dict["str"] = _Internal.ExtStr
     # Function 'input'
     if builtins_dict.get("raw_input") is not None:
         override_dict["input"] = builtins_dict.get("raw_input")
