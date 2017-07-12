@@ -22,6 +22,9 @@ cd "virtualenv-${VENV_VER}/"
 "python$VER" setup.py install --prefix="~/.local" || exit 1
 cd ..
 
+echo :: ~
+echo ::: $HOME
+
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '2.4' ]]; then
   virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
