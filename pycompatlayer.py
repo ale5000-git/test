@@ -115,9 +115,14 @@ def fix_builtins(override_debug=False):
         my_list.sort()
         return my_list
 
+    def _format(value, format_spec):
+        return value.__format__(format_spec)
+
     if builtins_dict.get(__name__, False):
         raise RuntimeError(__name__+" already loaded")
 
+    if 'format' not in str.__dict__:
+        override_dict["str"] = ExtStr
     # Function 'input'
     if builtins_dict.get("raw_input") is not None:
         override_dict["input"] = builtins_dict.get("raw_input")
@@ -136,9 +141,9 @@ def fix_builtins(override_debug=False):
     # Function 'sorted'
     if builtins_dict.get("sorted") is None:
         override_dict["sorted"] = _sorted
-
-    if 'format' not in str.__dict__:
-        override_dict["str"] = ExtStr
+    # Function 'format'
+    #if builtins_dict.get("format") is None:
+        #override_dict["format"] = _format
 
     override_dict[__name__] = True
     builtins_dict.update(override_dict)
@@ -216,13 +221,6 @@ def fix_all(override_debug=False, override_all=False):
 
 
 fix_all()
-
-def format(value, format_spec):
-    return value.__format__(format_spec)
-
-self="hi there %s"
-value=13
-print(self % (value,))
 
 val=3.33
 print("The value %.6f is the result" % val)
