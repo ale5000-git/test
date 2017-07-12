@@ -142,8 +142,8 @@ def fix_builtins(override_debug=False):
     if builtins_dict.get("sorted") is None:
         override_dict["sorted"] = _sorted
     # Function 'format'
-    #if builtins_dict.get("format") is None:
-        #override_dict["format"] = _format
+    if builtins_dict.get("format") is None:
+        override_dict["format"] = _format
 
     override_dict[__name__] = True
     builtins_dict.update(override_dict)
