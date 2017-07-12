@@ -206,17 +206,17 @@ def fix_all(override_debug=False, override_all=False):
 
 
 
-def format2(value, format_spec):
+def format(value, format_spec):
     return value.__format__(format_spec)
 
-def _str_format2(self, value):
+def _str_format(self, value):
     self = self.replace("{:", "%").replace("}", "")
     return self % (value, )
 
 class ext_str(str):
     pass
 
-ext_str.format2=_str_format2
+ext_str.format=_str_format
 
 if(__builtins__.__class__ is dict):
     builtins_dict = __builtins__
@@ -241,15 +241,9 @@ print("The value %.6f is the result" % val)
 #print(str("The value {0:.2f} is the result").format2(val))
 #print("The value {0:.2f} is the result".format(val))
 
-print(str("The value {:.6f} is the result").format2(val))
+print(str("The value {:.6f} is the result").format(val))
 print("The value {:.6f} is the result".format(val))
 
-
-print('1 '+str.format2('{:d}', 42))
-print('2 '+str.format('{:d}', 42))
-
-print('3 '+str('{:d}').format2(42))
-print('4 '+str('{:d}').format(42))
-
-print('5 '+format2(13, 'x'))
-print('6 '+format(13, 'x'))
+print('1 '+str.format('{:d}', 42))
+print('2 '+str('{:d}').format(42))
+print('3 '+format(13, 'x'))
