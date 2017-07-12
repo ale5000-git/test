@@ -18,46 +18,19 @@ def check(*args, **kwargs):
 	if "stdout" in kwargs:
 		raise ValueError("stdout argument not allowed, "
 						 "it will be overridden.")
-	process = subprocess.Popen(stdout=subprocess.PIPE, *args, **kwargs)
-	stdout_data, __ = process.communicate()
-	ret_code = process.poll()
-	if ret_code is None:
-		raise RuntimeWarning("The process is not yet terminated.")
-	if ret_code:
-		cmd = kwargs.get("args")
-		if cmd is None:
-			cmd = args[0]
-		raise ExtCalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data)
-	return stdout_data
+	process = os.popen(*args, 'r')
+	return process.read()
 
 def check_call(*args, **kwargs):
 	if "stdout" in kwargs:
 		raise ValueError("stdout argument not allowed, "
 						 "it will be overridden.")
-	process = subprocess.Popen(stdout=subprocess.PIPE, *args, **kwargs)
-	stdout_data, __ = process.communicate()
-	ret_code = process.poll()
-	if ret_code is None:
-		raise RuntimeWarning("The process is not yet terminated.")
-	if ret_code:
-		cmd = kwargs.get("args")
-		if cmd is None:
-			cmd = args[0]
-		raise ExtCalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data)
-	return stdout_data
+	process = os.popen(*args, 'r')
+	return process.read()
 
-def _check_output(*args, **kwargs):
+def check_output(*args, **kwargs):
 	if "stdout" in kwargs:
 		raise ValueError("stdout argument not allowed, "
 						 "it will be overridden.")
-	process = subprocess.Popen(stdout=subprocess.PIPE, *args, **kwargs)
-	stdout_data, __ = process.communicate()
-	ret_code = process.poll()
-	if ret_code is None:
-		raise RuntimeWarning("The process is not yet terminated.")
-	if ret_code:
-		cmd = kwargs.get("args")
-		if cmd is None:
-			cmd = args[0]
-		raise ExtCalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data)
-	return stdout_data
+	process = os.popen(*args, 'r')
+	return process.read()
