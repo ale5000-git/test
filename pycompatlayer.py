@@ -215,6 +215,7 @@ def fix_all(override_debug=False, override_all=False):
 
 
 
+fix_all()
 
 def format(value, format_spec):
     return value.__format__(format_spec)
