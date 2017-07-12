@@ -15,8 +15,8 @@ class CalledProcessError(Exception):
 		self.stderr = stderr
 
 def Popen(*args, **kwargs):
-	process = os.popen(*args)
-	return process.read()
+	#process = os.popen(*args)
+	#return process.read()
 
 def check(*args, **kwargs):
 	if "stdout" in kwargs:
