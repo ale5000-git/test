@@ -25,12 +25,12 @@ def check_call(*args, **kwargs):
 	if "stdout" in kwargs:
 		raise ValueError("stdout argument not allowed, "
 						 "it will be overridden.")
-	process = os.popen(*args)
-	print process.read()
+	#process = os.popen(*args)
+	#print process.read()
 
 def check_output(*args, **kwargs):
 	if "stdout" in kwargs:
 		raise ValueError("stdout argument not allowed, "
 						 "it will be overridden.")
-	process = os.popen(*args)
-	return process.read()
+	#process = os.popen(*args)
+	return ""#process.read()
