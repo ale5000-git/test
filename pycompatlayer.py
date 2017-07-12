@@ -15,11 +15,13 @@ __copyright__ = "Copyright (C) 2016-2017, ale5000"
 __license__ = "LGPLv3+"
 
 
-
 class ExtStr(str):
     def format(self, value):
         self = self.replace("{:", "%").replace("}", "")
         return self % (value, )
+
+    def __format__(self, format_spec):
+        return "%"+format_spec % (self, )
 
 
 def set_utf8_default():
@@ -234,4 +236,4 @@ print(str("The value {:.6f} is the result").format(val))
 print(str)
 #print('1 '+str.format('{:d}', 42))
 print('2 '+str('{:d}').format(42))
-print('3 '+format(13, 'x'))
+print('3 '+format('13', 'x'))
