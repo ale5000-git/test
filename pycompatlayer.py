@@ -119,7 +119,7 @@ def fix_builtins(override_debug=False):
         return my_list
 
     def _format(value, format_spec):
-        return value.__format__(format_spec)
+        return str(value).__format__(format_spec)
 
     if builtins_dict.get(__name__, False):
         raise RuntimeError(__name__+" already loaded")
@@ -238,3 +238,4 @@ print(str)
 #print('1 '+str.format('{:d}', 42))
 print('2 '+str('{:d}').format(42))
 print('3 '+format('13', 's'))
+print('3 '+format(13, 'x'))
