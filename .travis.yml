@@ -73,8 +73,9 @@ install:
   #- .travis/setup_dependencies.sh
 
 script:
-  - python -V
+  #- python -V
   #- .travis/run_codecov.sh 'pycompatlayer.py'
+  - python pycompatlayer.py
 
 after_success:
   # Upload results
