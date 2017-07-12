@@ -201,6 +201,54 @@ def fix_all(override_debug=False, override_all=False):
     fix_subprocess(override_debug, override_all)
     return True
 
-print("The value {:.2f} is the result".format(3.33))
-print('{:d}'.format(42))
 
+
+
+
+
+def format2(value, format_spec):
+    return value.__format__(format_spec)
+
+def _str_format2(self, value):
+    self = self.replace("{:", "%").replace("}", "")
+    return self % (value, )
+
+class ext_str(str):
+    pass
+
+ext_str.format2=_str_format2
+
+if(__builtins__.__class__ is dict):
+    builtins_dict = __builtins__
+else:
+    try:
+        import builtins
+    except ImportError:
+        import __builtin__ as builtins
+    builtins_dict = builtins.__dict__
+
+override_dict = {}
+override_dict["str"] = ext_str
+builtins_dict.update(override_dict)
+
+self="hi there %s"
+value=13
+print(self % (value,))
+
+print("The value %.6f is the result" % val)
+
+#print(str("The value {0:.2f} is the result").format2(val))
+#print("The value {0:.2f} is the result".format(val))
+
+print(str("The value {:.6f} is the result").format2(val))
+print("The value {:.6f} is the result".format(val))
+
+
+print('1 '+str.format2('{:d}', 42))
+print('2 '+str.format('{:d}', 42))
+
+print('3 '+str('{:d}').format2(42))
+print('4 '+str('{:d}').format(42))
+
+print('5 '+format2(13, 'x'))
+print('6 '+format(13, 'x'))
