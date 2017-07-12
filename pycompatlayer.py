@@ -200,3 +200,5 @@ def fix_all(override_debug=False, override_all=False):
     fix_builtins(override_debug)
     fix_subprocess(override_debug, override_all)
     return True
+
+print("The value {:.2f} is the result".format(3.33))
