@@ -244,6 +244,7 @@ print("The value %.6f is the result" % val)
 print(str("The value {:.6f} is the result").format(val))
 #print("The value {:.6f} is the result".format(val))
 
-print('1 '+str.format('{:d}', 42))
+print(str)
+#print('1 '+str.format('{:d}', 42))
 print('2 '+str('{:d}').format(42))
 print('3 '+format(13, 'x'))
