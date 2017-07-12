@@ -19,29 +19,26 @@ fi
 wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
 tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/"
-"python$VER" setup.py install --prefix="~/.local" || exit 1
+"python$VER" setup.py install --prefix="$HOME/.local" || exit 1
 cd ..
-
-echo :: ~
-echo ::: $HOME
 
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '2.4' ]]; then
-  virtualenv -p "python$VER" "~/virtualenv/python$VER" || exit 1
+  virtualenv -p "python$VER" "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
-  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" ~/.local/lib/python$VER/site-packages || exit 1
-  "python$VER" ~/.local/lib/python$VER/site-packages/virtualenv.pyc -p "python$VER" "~/virtualenv/python$VER" #|| exit 1
+  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
+  "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv.pyc" -p "python$VER" "$HOME/virtualenv/python$VER" #|| exit 1
 else
-  virtualenv -p "python$VER" --setuptools "~/virtualenv/python$VER" || exit 1
+  virtualenv -p "python$VER" --setuptools "$HOME/virtualenv/python$VER" || exit 1
 fi
-source ~/virtualenv/python$VER/bin/activate #|| exit 1
+source "$HOME/virtualenv/python$VER/bin/activate" #|| exit 1
 
 export TRAVIS_PYTHON_VERSION="$VER"
 
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   echo '*** Python - Updating Setuptools...'
   easy_install 'https://pypi.python.org/packages/source/s/setuptools/setuptools-0.7.3.tar.gz' > /dev/null 2>&1 || exit 1
-  rm -rf "~/virtualenv/python$VER/lib/python$VER/site-packages/distribute-"* || exit 1
+  rm -rf "$HOME/virtualenv/python$VER/lib/python$VER/site-packages/distribute-"* || exit 1
   pip install setuptools==19.4 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Updating Setuptools...'
