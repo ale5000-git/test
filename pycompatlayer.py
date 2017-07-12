@@ -15,6 +15,13 @@ __copyright__ = "Copyright (C) 2016-2017, ale5000"
 __license__ = "LGPLv3+"
 
 
+
+class ExtStr(str):
+    def format(self, value):
+        self = self.replace("{:", "%").replace("}", "")
+        return self % (value, )
+
+
 def set_utf8_default():
     if sys.getdefaultencoding() != "utf-8":
         try:
@@ -130,6 +137,9 @@ def fix_builtins(override_debug=False):
     if builtins_dict.get("sorted") is None:
         override_dict["sorted"] = _sorted
 
+    if 'format' not in str.__dict__:
+        override_dict["str"] = ExtStr
+
     override_dict[__name__] = True
     builtins_dict.update(override_dict)
     del override_dict
@@ -208,28 +218,6 @@ def fix_all(override_debug=False, override_all=False):
 
 def format(value, format_spec):
     return value.__format__(format_spec)
-
-def _str_format(self, value):
-    self = self.replace("{:", "%").replace("}", "")
-    return self % (value, )
-
-class ext_str(str):
-    pass
-
-ext_str.format=_str_format
-
-if(__builtins__.__class__ is dict):
-    builtins_dict = __builtins__
-else:
-    try:
-        import builtins
-    except ImportError:
-        import __builtin__ as builtins
-    builtins_dict = builtins.__dict__
-
-override_dict = {}
-override_dict["str"] = ext_str
-builtins_dict.update(override_dict)
 
 self="hi there %s"
 value=13
