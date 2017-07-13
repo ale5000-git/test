@@ -1,0 +1,3 @@
+[submodule "sub-py"]
+	path = sub-py
+	url = https://github.com/ale5000-git/pycompatlayer.git
