@@ -1,23 +1,87 @@
 sudo: false
+os: linux
 language: python
 
 git:
   depth: 1
 
 env:
-  global: TERM=dumb
+  global:
+    - TERM=dumb
 
 matrix:
   include:
-    - os: linux
-      python: '3.6'
+    - env: Python=2.3
+      language: generic
+      addons:
+        apt:
+          sources:
+            - sourceline: 'ppa:fkrull/deadsnakes'
+          packages:
+            - python2.3
+            #- python2.3-dev
+      before_install: . .travis/setup_virtualenv.sh
+    - env: Python=2.4
+      language: generic
+      addons:
+        apt:
+          sources:
+            - sourceline: 'ppa:fkrull/deadsnakes'
+          packages:
+            - python2.4
+            - python2.4-dev
+      before_install: . .travis/setup_virtualenv.sh
+    - env: Python=2.5
+      language: generic
+      addons:
+        apt:
+          sources:
+            - sourceline: 'ppa:fkrull/deadsnakes'
+          packages:
+            - python2.5
+            - python2.5-dev
+      before_install: . .travis/setup_virtualenv.sh
+    #- python: '3.6'
+
+    #- env: Jython=latest
+      #python: '2.7'
+      #addons:
+        #apt:
+          #packages:
+            #- jython
+      #before_install:
+        #- easy_install virtualenv==1.9.1
+        #- unset JYTHON_HOME
+        #- virtualenv -p "jython" --setuptools "~/virtualenv/jython"
+        #- deactivate
+        #- unset JYTHON_HOME
+        #- source "~/virtualenv/jython/bin/activate"
+
+    #- os: osx
+      #env: Python='default (macOS)'
+      #language: generic
+  exclude:
+    - env: Python=2.3
+    - env: Python=2.4
+    - env: Python=2.5
+    - env: Python=3.1
+  allow_failures:
+    - os: osx
   fast_finish: true
 
 install:
-  - .travis/setup_dependencies.sh
+  #- .travis/setup_dependencies.sh
 
 script:
-  - .travis/run_codecov.sh 'pycompatlayer.py'
+  - python -V
+  #- .travis/run_codecov.sh 'pycompatlayer.py'
+  - python pycompatlayer.py
+  #
+  - print(str)
+  - #print('1 '+str.format('{:d}', 42))
+  - print('2 '+str('{:d}').format(42))
+  - #print('3 '+format('13', 's'))
+  - #print('3 '+format(13, 'x'))
 
 after_success:
   # Upload results

@@ -4,18 +4,14 @@
 
 import setuptools
 
-#if sys.version_info <= (3, 2):
-    #requires.append("configparser")
-
-def custom_test_suite():
-    import unittest
-    return unittest.TestLoader().discover("tests", pattern="*_test.py")
-
+test_requirements = [
+    "unittest2"
+]
 
 setuptools.setup(
     zip_safe=True,
     name="PyCompatLayer",
-    version="0.0.10-2",
+    version="0.0.10.dev3",
     description="Compatibility layer for Python",
     long_description="See https://pypi.python.org/pypi/PyCompatLayer",
     url="https://github.com/ale5000-git/pycompatlayer",
@@ -24,7 +20,8 @@ setuptools.setup(
     license="LGPLv3+",
     platforms=["any"],
     py_modules=["pycompatlayer"],
-    test_suite="setup.custom_test_suite",
+    tests_require=test_requirements,
+    test_suite="tests.custom_test_suite",
 
     classifiers=[
         "Development Status :: 4 - Beta",
