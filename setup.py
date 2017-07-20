@@ -11,7 +11,7 @@ test_requirements = [
 setuptools.setup(
     zip_safe=True,
     name="PyCompatLayer",
-    version="0.0.10.dev3",
+    version="0.0.10.dev4",
     description="Compatibility layer for Python",
     long_description="See https://pypi.python.org/pypi/PyCompatLayer",
     url="https://github.com/ale5000-git/pycompatlayer",
@@ -19,6 +19,7 @@ setuptools.setup(
     author_email="nospam@nospam",
     license="LGPLv3+",
     platforms=["any"],
+    package_dir={"": "pycompatlayer"},
     py_modules=["pycompatlayer"],
     tests_require=test_requirements,
     test_suite="tests.custom_test_suite",
