@@ -2,3 +2,4 @@ API
 ===
 
 .. automodule:: pycompatlayer
+   :members:
