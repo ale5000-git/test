@@ -4,6 +4,10 @@
 import sys
 import os
 
+# General information about the project.
+project = 'TestName'
+copyright = '2016-2017, ale5000'
+
 # The master toctree document.
 master_doc = 'index'
 
