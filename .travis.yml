@@ -1,6 +1,7 @@
 sudo: false
 os: linux
 language: python
+dist: trusty
 
 git:
   depth: 1
@@ -30,7 +31,7 @@ matrix:
           packages:
             - python2.4
             - python2.4-dev
-            - python-virtualenv=1.7.1.2-1
+            - python-virtualenv
       before_install: . .travis/setup_virtualenv.sh
     - env: Python=2.5
       language: generic
