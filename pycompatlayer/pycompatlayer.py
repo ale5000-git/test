@@ -224,11 +224,10 @@ def fix_all(override_debug=False, override_all=False):
 
 
 import subprocess
+fix_all()
 
 args = ["python", "-V"]
-subprocess.check_output(args)
-
-safe_subprocess_run(["python", "-V"])
+#subprocess.check_output(args)
 
 def safe_subprocess_run(command, raise_error=True):
     try:
@@ -246,3 +245,5 @@ def safe_subprocess_run(command, raise_error=True):
 
     return False
 
+
+safe_subprocess_run(["python", "-V"])
