@@ -223,7 +223,7 @@ def fix_all(override_debug=False, override_all=False):
 
 
 
-import subprocess
+import subprocess, os
 fix_all()
 
 args = ["python", "-V"]
