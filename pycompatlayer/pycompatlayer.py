@@ -230,15 +230,6 @@ def safe_subprocess_run(command, raise_error=True):
     try:
         raise WindowsError
         return subprocess.check_output(command, stderr=subprocess.STDOUT)
-    except subprocess.CalledProcessError as e:
-        print_(os.linesep+"ERROR INFO")
-        print_("==========")
-        print_("Output: "+e.output.decode("utf-8").strip())
-        print_("Cmd: "+str(e.cmd))
-        print_("Return code: "+str(e.returncode))
-        if raise_error:
-            print_()
-            raise
     except (WindowsError, OSError):
         print_(os.linesep+"ERROR INFO")
         print_("==========")
@@ -255,4 +246,3 @@ def safe_subprocess_run(command, raise_error=True):
 
     return False
 
-safe_subprocess_run(""
