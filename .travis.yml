@@ -77,7 +77,7 @@ install:
 script:
   - python -V
   #- .travis/run_codecov.sh 'pycompatlayer.py'
-  - python pycompatlayer.py
+  - python pycompatlayer/pycompatlayer.py
   #
   - print(str)
   - #print('1 '+str.format('{:d}', 42))
