@@ -223,3 +223,36 @@ def fix_all(override_debug=False, override_all=False):
 
 args = ["python", "-V"]
 subprocess.check_output(args)
+
+safe_subprocess_run(["python", "-V"])
+
+def safe_subprocess_run(command, raise_error=True):
+    try:
+        raise WindowsError
+        return subprocess.check_output(command, stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        print_(os.linesep+"ERROR INFO")
+        print_("==========")
+        print_("Output: "+e.output.decode("utf-8").strip())
+        print_("Cmd: "+str(e.cmd))
+        print_("Return code: "+str(e.returncode))
+        if raise_error:
+            print_()
+            raise
+    except (WindowsError, OSError) as e:
+        print_(os.linesep+"ERROR INFO")
+        print_("==========")
+        #print_("Output: "+e.output.decode("utf-8").strip())
+        #print_("Cmd: "+str(e.cmd))
+        print_("Error number: "+str(e.errno))
+        print_("Error number: "+str(e.winerror))
+        print_("Error number: "+str(e.strerror))
+        print_("Error number: "+str(e.filename))
+        #print_("Error number: "+str(e.errno))
+        if not raise_error:
+            print_()
+            raise
+
+    return False
+
+safe_subprocess_run(""
