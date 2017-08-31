@@ -221,6 +221,10 @@ def fix_all(override_debug=False, override_all=False):
     fix_subprocess(override_debug, override_all)
     return True
 
+
+
+import subprocess
+
 args = ["python", "-V"]
 subprocess.check_output(args)
 
