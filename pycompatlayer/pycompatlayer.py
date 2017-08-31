@@ -231,10 +231,10 @@ args = ["python", "-V"]
 
 def safe_subprocess_run(command, raise_error=True):
     try:
-        raise WindowsError
+        raise OSError
         return subprocess.check_output(command, stderr=subprocess.STDOUT)
     except OSError:
-        type, e, __ = sys.exc_info()
+        type, e = sys.exc_info()[:2]
         print_(os.linesep+"ERROR INFO")
         print_("==========")
         print_("Type: "+str(type))
