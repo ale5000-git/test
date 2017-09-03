@@ -159,7 +159,7 @@ def fix_subprocess(override_debug=False, override_exception=False):
     """Activate the subprocess compatibility."""
     import subprocess
 
-    class CalledProcessError(Exception, object):
+    class CalledProcessError(Exception):
         """Raised when a process run by check_call() or check_output()
         returns a non-zero exit status."""
 
@@ -173,7 +173,7 @@ def fix_subprocess(override_debug=False, override_exception=False):
     if "CalledProcessError" not in subprocess.__dict__:
         subprocess.CalledProcessError = CalledProcessError
 
-    class ExtCalledProcessError(subprocess.CalledProcessError):
+    class ExtCalledProcessError(subprocess.CalledProcessError, object):
         """Raised when a process run by check_call() or check_output()
         returns a non-zero exit status."""
 
