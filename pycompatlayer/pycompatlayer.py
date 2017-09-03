@@ -246,7 +246,7 @@ def safe_subprocess_run(command, raise_error=True):
     return False
 
 
-safe_subprocess_run(["python", "-V"], false)
+safe_subprocess_run(["python", "-V"], False)
 
 
 
