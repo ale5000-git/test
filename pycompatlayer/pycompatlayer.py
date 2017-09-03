@@ -173,7 +173,7 @@ def fix_subprocess(override_debug=False, override_exception=False):
     if "CalledProcessError" not in subprocess.__dict__:
         subprocess.CalledProcessError = CalledProcessError
 
-    class ExtCalledProcessError(subprocess.CalledProcessError, object):
+    class ExtCalledProcessError(subprocess.CalledProcessError):
         """Raised when a process run by check_call() or check_output()
         returns a non-zero exit status."""
 
@@ -205,7 +205,7 @@ def fix_subprocess(override_debug=False, override_exception=False):
             cmd = kwargs.get("args")
             if cmd is None:
                 cmd = args[0]
-            raise ExtCalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data)
+            raise CalledProcessError(returncode=ret_code, cmd=cmd, output=stdout_data)
         return stdout_data
 
     try:
