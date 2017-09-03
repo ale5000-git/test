@@ -266,7 +266,7 @@ def safe_subprocess_run(command, raise_error=True):
 
 safe_subprocess_run(["python", "-V"], False)
 print_("----------------------------------")
-
+print_()
 
 def test_1a():
     try:
@@ -299,11 +299,6 @@ def test_2c():
     except BaseException:
         print("BaseException")
 
-def test_3b():
-    try:
-        raise BaseException
-    except Exception:
-        print("Exception")
 
 def test_3c():
     try:
@@ -317,5 +312,4 @@ test_1b()
 test_1c()
 test_2b()
 test_2c()
-test_3b()
 test_3c()
