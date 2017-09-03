@@ -79,9 +79,9 @@ script:
   #- .travis/run_codecov.sh 'pycompatlayer.py'
   - python pycompatlayer/pycompatlayer.py
   #
-  - print(str)
+  - #####print(str)
   - #print('1 '+str.format('{:d}', 42))
-  - print('2 '+str('{:d}').format(42))
+  - #####print('2 '+str('{:d}').format(42))
   - #print('3 '+format('13', 's'))
   - #print('3 '+format(13, 'x'))
 
