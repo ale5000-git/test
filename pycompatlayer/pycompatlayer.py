@@ -34,6 +34,7 @@ class _Internal:
             self.stdout = output
             self.stderr = stderr
 
+    @staticmethod
     def extend_called_process_error(subprocess_lib):
         class ExtCalledProcessError(subprocess_lib.CalledProcessError):
             """Raised when a process run by check_call() or check_output()
@@ -264,7 +265,7 @@ def safe_subprocess_run(command, raise_error=True):
 
 
 safe_subprocess_run(["python", "-V"], False)
-
+print_("----------------------------------")
 
 
 def test_1a():
