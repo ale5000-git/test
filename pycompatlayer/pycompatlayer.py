@@ -127,7 +127,7 @@ def fix_builtins(override_debug=False):
         raise RuntimeError(__name__+" already loaded")
 
     if builtins_dict.get("BaseException") is None:
-        BaseException = Exception
+        override_dict["BaseException"] = Exception
     if 'format' not in str.__dict__:
         override_dict["str"] = _Internal.ExtStr
     # Function 'input'
