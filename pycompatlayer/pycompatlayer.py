@@ -23,7 +23,8 @@ class _InternalReferences:
 class _Internal:
     """For internal use only."""
 
-    class CalledProcessError(Exception):
+    import subprocess
+    class CalledProcessError(subprocess.SubprocessError):
         """Raised when a process run by check_call() or check_output()
         returns a non-zero exit status."""
 
