@@ -246,4 +246,58 @@ def safe_subprocess_run(command, raise_error=True):
     return False
 
 
-safe_subprocess_run(["python", "-V"])
+safe_subprocess_run(["python", "-V"], false)
+
+
+
+def test_1a():
+    try:
+        subprocess.check_output(["python", "/"], stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError:
+        print("subprocess.CalledProcessError")
+
+def test_1b():
+    try:
+        subprocess.check_output(["python", "/"], stderr=subprocess.STDOUT)
+    except Exception:
+        print("Exception")
+
+def test_1c():
+    try:
+        subprocess.check_output(["python", "/"], stderr=subprocess.STDOUT)
+    except BaseException:
+        print("BaseException")
+
+
+def test_2b():
+    try:
+        raise Exception
+    except Exception:
+        print("Exception")
+
+def test_2c():
+    try:
+        raise Exception
+    except BaseException:
+        print("BaseException")
+
+def test_3b():
+    try:
+        raise BaseException
+    except Exception:
+        print("Exception")
+
+def test_3c():
+    try:
+        raise BaseException
+    except BaseException:
+        print("BaseException")
+
+
+test_1a()
+test_1b()
+test_1c()
+test_2b()
+test_2c()
+test_3b()
+test_3c()
