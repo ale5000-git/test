@@ -15,28 +15,31 @@ __copyright__ = "Copyright (C) 2016-2017, ale5000"
 __license__ = "LGPLv3+"
 
 
-class _InternalReferences:
+class _InternalReferences(object):
     """For internal use only."""
     UsedCalledProcessError = None
 
 
-class _Internal:
+class _Internal(object):
     """For internal use only."""
 
-    import subprocess
-    class CalledProcessError(subprocess.SubprocessError):
-        """Raised when a process run by check_call() or check_output()
-        returns a non-zero exit status."""
+   def __new__(cls, *args, **kwargs):
 
-        def __init__(self, returncode, cmd, output=None, stderr=None):
-            self.returncode = returncode
-            self.cmd = cmd
-            self.output = output
-            self.stdout = output
-            self.stderr = stderr
+            raise TypeError("For internal use only.")
+    class SubprocessError(Exception):
+        pass
 
-    @staticmethod
-    def extend_called_process_error(subprocess_lib):
+    class ExtStr(str):
+        def format(format_spec, value):  # Largely incomplete
+            format_spec = format_spec.replace("{}", "%s").replace("{0}", "%s").replace("{:", "%").replace("}", "")
+            return format_spec % (value, )
+
+        def __format__(value, format_spec):  # Largely incomplete
+            return "%"+format_spec % (value, )
+
+
+def _subprocess_called_process_error(already_exist, subprocess_lib):
+    if already_exist:
         class ExtCalledProcessError(subprocess_lib.CalledProcessError):
             """Raised when a process run by check_call() or check_output()
             returns a non-zero exit status."""
@@ -57,14 +60,20 @@ class _Internal:
                     self.stderr = stderr
 
         _InternalReferences.UsedCalledProcessError = ExtCalledProcessError
+    else:
+        class CalledProcessError(subprocess_lib.SubprocessError):
+            """Raised when a process run by check_call() or check_output()
+            returns a non-zero exit status."""
 
-    class ExtStr(str):
-        def format(format_spec, value):  # Largely incomplete
-            format_spec = format_spec.replace("{}", "%s").replace("{0}", "%s").replace("{:", "%").replace("}", "")
-            return format_spec % (value, )
+            def __init__(self, returncode, cmd, output=None, stderr=None):
+                self.returncode = returncode
+                self.cmd = cmd
+                self.output = output
+                self.stdout = output
+                self.stderr = stderr
 
-        def __format__(value, format_spec):  # Largely incomplete
-            return "%"+format_spec % (value, )
+        _InternalReferences.UsedCalledProcessError = CalledProcessError
+
 
 
 def set_default_encoding(encoding="utf-8"):
@@ -203,11 +212,14 @@ def fix_subprocess(override_debug=False, override_exception=False):
     """Activate the subprocess compatibility."""
     import subprocess
 
+    # Exceptions
+    if subprocess.__dict__.get("SubprocessError") is None:
+        subprocess.SubprocessError = _Internal.SubprocessError
     if _InternalReferences.UsedCalledProcessError is None:
         if "CalledProcessError" in subprocess.__dict__:
-            _Internal.extend_called_process_error(subprocess)
+            _subprocess_called_process_error(True, subprocess)
         else:
-            _InternalReferences.UsedCalledProcessError = _Internal.CalledProcessError
+            _subprocess_called_process_error(False, subprocess)
             subprocess.CalledProcessError = _InternalReferences.UsedCalledProcessError
 
     def _check_output(*args, **kwargs):
@@ -238,6 +250,8 @@ def fix_all(override_debug=False, override_all=False):
     fix_builtins(override_debug)
     fix_subprocess(override_debug, override_all)
     return True
+
+
 
 
 
