@@ -19,12 +19,15 @@ class _InternalReferences(object):
     """For internal use only."""
     UsedCalledProcessError = None
 
+    def __new__(self, *args, **kwargs):
+        raise TypeError(self.__doc__)
+
 
 class _Internal(object):
     """For internal use only."""
 
     def __new__(self, *args, **kwargs):
-        raise TypeError("For internal use only.")
+        raise TypeError(self.__doc__)
 
     class SubprocessError(Exception):
         pass
