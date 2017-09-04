@@ -23,9 +23,9 @@ class _InternalReferences(object):
 class _Internal(object):
     """For internal use only."""
 
-   def __new__(cls, *args, **kwargs):
+    def __new__(self, *args, **kwargs):
+        raise TypeError("For internal use only.")
 
-            raise TypeError("For internal use only.")
     class SubprocessError(Exception):
         pass
 
