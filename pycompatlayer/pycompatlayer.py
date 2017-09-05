@@ -331,3 +331,5 @@ test_1c()
 test_2b()
 test_2c()
 test_3c()
+
+inst = _Internal()
