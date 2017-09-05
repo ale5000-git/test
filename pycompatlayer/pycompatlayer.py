@@ -32,7 +32,7 @@ class _Internal(object):
     def __init__(self, *args, **kwargs):
         print("init")
 
-    class SubprocessError(Exception, object):
+    class SubprocessError(Exception):
         pass
 
     class ExtStr(str):
