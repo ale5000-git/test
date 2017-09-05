@@ -19,15 +19,15 @@ class _InternalReferences(object):
     """For internal use only."""
     UsedCalledProcessError = None
 
-    def __new__(self, *args, **kwargs):
-        raise TypeError(self.__doc__)
+    def __new__(cls, *args, **kwargs):
+        raise TypeError(cls.__doc__)
 
 
 class _Internal(object):
     """For internal use only."""
 
-    def __new__(self, *args, **kwargs):
-        raise TypeError(self.__doc__)
+    def __new__(cls, *args, **kwargs):
+        raise TypeError(cls.__doc__)
 
     def __init__(self, *args, **kwargs):
         print("init")
@@ -36,9 +36,9 @@ class _Internal(object):
         pass
 
     class ExtStr(str):
-        def format(format_spec, *args, **kwargs):  # Largely incomplete (it only use the first value of args)
-            format_spec = format_spec.replace("{}", "%s").replace("{0}", "%s").replace("{:", "%").replace("}", "")
-            return format_spec % (args[0], )
+        def format(format_string, *args, **kwargs):  # Largely incomplete (it only use the first value of args)
+            format_string = format_string.replace("{}", "%s").replace("{0}", "%s").replace("{:", "%").replace("}", "")
+            return format_string % (args[0], )
 
         def __format__(value, format_spec):  # Largely incomplete
             return "%"+format_spec % (value, )
@@ -72,6 +72,7 @@ def _subprocess_called_process_error(already_exist, subprocess_lib):
             returns a non-zero exit status."""
 
             def __init__(self, returncode, cmd, output=None, stderr=None):
+                SuperClass.__init__(self, x)
                 self.returncode = returncode
                 self.cmd = cmd
                 self.output = output
@@ -348,3 +349,5 @@ print_(str( issubclass(Exception, object) ))
 print_(str( issubclass(subprocess.CalledProcessError, object) ))
 
 #inst = _Internal()
+
+subprocess.check_output(["python", "/"], stderr=subprocess.STDOUT)
