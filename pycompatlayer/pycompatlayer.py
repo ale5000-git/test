@@ -336,7 +336,8 @@ test_2c()
 test_3c()
 print_()
 
-print_(str( issubclass(BaseException, Exception) ))
-print_(str( issubclass(CalledProcessError, object) ))
+print_(str( issubclass(Exception, BaseException) ))
+print_(str( issubclass(subprocess.CalledProcessError, Exception) ))
+print_(str( issubclass(subprocess.CalledProcessError, object) ))
 
 #inst = _Internal()
