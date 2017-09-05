@@ -36,9 +36,9 @@ class _Internal(object):
         pass
 
     class ExtStr(str):
-        def format(format_spec, value):  # Largely incomplete
+        def format(format_spec, *args, **kwargs):  # Largely incomplete (it only use the first value of args)
             format_spec = format_spec.replace("{}", "%s").replace("{0}", "%s").replace("{:", "%").replace("}", "")
-            return format_spec % (value, )
+            return format_spec % (args[0], )
 
         def __format__(value, format_spec):  # Largely incomplete
             return "%"+format_spec % (value, )
