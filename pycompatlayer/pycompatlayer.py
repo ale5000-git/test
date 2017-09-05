@@ -32,7 +32,7 @@ class _Internal(object):
     def __init__(self, *args, **kwargs):
         print("init")
 
-    class SubprocessError(Exception):
+    class SubprocessError(Exception, object):
         pass
 
     class ExtStr(str):
@@ -46,7 +46,7 @@ class _Internal(object):
 
 def _subprocess_called_process_error(already_exist, subprocess_lib):
     if already_exist:
-        class ExtCalledProcessError(subprocess_lib.CalledProcessError):
+        class ExtCalledProcessError(subprocess_lib.CalledProcessError, object):
             """Raised when a process run by check_call() or check_output()
             returns a non-zero exit status."""
 
@@ -337,7 +337,11 @@ test_3c()
 print_()
 
 print_(str( issubclass(Exception, BaseException) ))
-print_(str( issubclass(subprocess.CalledProcessError, Exception) ))
+print_(str( issubclass(subprocess.SubprocessError, Exception) ))
+print_(str( issubclass(subprocess.CalledProcessError, subprocess.SubprocessError) ))
+print_()
+
+print_(str( issubclass(Exception, object) ))
 print_(str( issubclass(subprocess.CalledProcessError, object) ))
 
 #inst = _Internal()
