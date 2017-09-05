@@ -72,7 +72,7 @@ def _subprocess_called_process_error(already_exist, subprocess_lib):
             returns a non-zero exit status."""
 
             def __init__(self, returncode, cmd, output=None, stderr=None):
-                SuperClass.__init__(self, x)
+                #SuperClass.__init__(self, x)
                 self.returncode = returncode
                 self.cmd = cmd
                 self.output = output
