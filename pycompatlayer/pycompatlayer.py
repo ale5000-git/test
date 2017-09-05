@@ -336,7 +336,7 @@ test_2c()
 test_3c()
 print_()
 
-self.assertTrue( issubclass(BaseException, Exception) )
-self.assertTrue( issubclass(CalledProcessError, object) )
+print_(str( issubclass(BaseException, Exception) ))
+print_(str( issubclass(CalledProcessError, object) ))
 
 #inst = _Internal()
