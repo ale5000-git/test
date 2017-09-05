@@ -72,7 +72,7 @@ def _subprocess_called_process_error(already_exist, subprocess_lib):
             returns a non-zero exit status."""
 
             def __init__(self, returncode, cmd, output=None, stderr=None):
-                super(CalledProcessError, self).__init__("sss")
+                subprocess_lib.SubprocessError.__init__(self, "Command '" + cmd + "' returned non-zero exit status " + returncode)
                 self.returncode = returncode
                 self.cmd = cmd
                 self.output = output
