@@ -29,6 +29,9 @@ class _Internal(object):
     def __new__(self, *args, **kwargs):
         raise TypeError(self.__doc__)
 
+    def __init__(self, *args, **kwargs):
+        print("init")
+
     class SubprocessError(Exception):
         pass
 
@@ -331,5 +334,9 @@ test_1c()
 test_2b()
 test_2c()
 test_3c()
+print_()
 
-inst = _Internal()
+self.assertTrue( issubclass(BaseException, Exception) )
+self.assertTrue( issubclass(CalledProcessError, object) )
+
+#inst = _Internal()
