@@ -336,7 +336,7 @@ test_2c()
 test_3c()
 print_()
 
-str('{1} {0}').format('one', 'two')
+print_(str('{1} {0}').format('one', 'two'))
 print_()
 
 print_(str( issubclass(Exception, BaseException) ))
