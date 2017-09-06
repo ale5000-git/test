@@ -337,17 +337,17 @@ test_2c()
 test_3c()
 print_()
 
-print_(str('{1} {0}').format('one', 'two'))
+#print_(str('{1} {0}').format('one', 'two'))
+#print_()
+
+print_("issubclass(Exception, BaseException)", str( issubclass(Exception, BaseException) ))
+print_("issubclass(subprocess.SubprocessError, Exception)", str( issubclass(subprocess.SubprocessError, Exception) ))
+print_("issubclass(subprocess.CalledProcessError, subprocess.SubprocessError)", str( issubclass(subprocess.CalledProcessError, subprocess.SubprocessError) ))
 print_()
 
-print_(str( issubclass(Exception, BaseException) ))
-print_(str( issubclass(subprocess.SubprocessError, Exception) ))
-print_(str( issubclass(subprocess.CalledProcessError, subprocess.SubprocessError) ))
-print_()
-
-print_(str( issubclass(Exception, object) ))
-print_(str( issubclass(subprocess.CalledProcessError, object) ))
+print_("issubclass(Exception, object)", str( issubclass(Exception, object) ))
+print_("issubclass(subprocess.CalledProcessError, object)", str( issubclass(subprocess.CalledProcessError, object) ))
 
 #inst = _Internal()
 
-subprocess.check_output(["python", "/"], stderr=subprocess.STDOUT)
+###subprocess.check_output(["python", "/"], stderr=subprocess.STDOUT)
