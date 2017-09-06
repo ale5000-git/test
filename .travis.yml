@@ -12,6 +12,7 @@ env:
 
 matrix:
   include:
+    - python: "pypy3"
     - env: Python=2.3
       language: generic
       addons:
@@ -72,7 +73,7 @@ matrix:
   fast_finish: true
 
 install:
-  #- .travis/setup_dependencies.sh
+  - .travis/setup_dependencies.sh
 
 script:
   - python -V
