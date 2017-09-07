@@ -22,6 +22,7 @@ matrix:
           packages:
             - python2.3
             #- python2.3-dev
+            - python-virtualenv
       before_install: . .travis/setup_virtualenv.sh
     - env: Python=2.4
       language: generic
