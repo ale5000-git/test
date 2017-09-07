@@ -74,6 +74,7 @@ matrix:
   fast_finish: true
 
 install:
+  - echo "$TRAVIS_PYTHON_VERSION"
   - .travis/setup_dependencies.sh
 
 script:
