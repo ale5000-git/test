@@ -16,6 +16,12 @@ else
   #easy_install -U virtualenv || exit 1
   VENV_VER='x.x' #################################
 fi
+
+if [[ $VER == '2.3' ]]; then
+  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
+  pip install setuptools==1.4.2 || exit 1 #################
+fi
+
 wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
 tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
 cd "virtualenv-${VENV_VER}/"
@@ -26,7 +32,7 @@ echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '2.4' ]]; then
   virtualenv -p "python$VER" "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
-  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
+  #cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
   pip install setuptools==1.4.2 || exit 1 #################
   "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv.pyc" -p "python$VER" "$HOME/virtualenv/python$VER" #|| exit 1
 else
