@@ -12,7 +12,7 @@ env:
 
 matrix:
   include:
-    - python: "pypy3-2.4.0"
+    #- python: "pypy3-2.4.0"
     - env: Python=2.3
       language: generic
       addons:
@@ -22,7 +22,7 @@ matrix:
           packages:
             - python2.3
             #- python2.3-dev
-            - python-virtualenv
+            #- python-virtualenv
       before_install: . .travis/setup_virtualenv.sh
     - env: Python=2.4
       language: generic
@@ -33,7 +33,7 @@ matrix:
           packages:
             - python2.4
             - python2.4-dev
-            - python-virtualenv
+            #- python-virtualenv
       before_install: . .travis/setup_virtualenv.sh
     - env: Python=2.5
       language: generic
@@ -64,11 +64,6 @@ matrix:
     #- os: osx
       #env: Python='default (macOS)'
       #language: generic
-  exclude:
-    - env: Python=2.3
-    - env: Python=2.4
-    - env: Python=2.5
-    - env: Python=3.1
   allow_failures:
     - os: osx
   fast_finish: true
