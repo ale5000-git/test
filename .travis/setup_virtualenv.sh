@@ -28,7 +28,7 @@ cd "virtualenv-${VENV_VER}/"
 cd ..
 
 echo '*** Python - Virtualenv setup in progress...'
-"virtualenv-$VER" -p "python$VER" "$HOME/virtualenv/python$VER" || exit 1 #############
+
 if [[ $VER == '3.1' ]]; then
   "virtualenv-$VER" -p "python$VER" --setuptools "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '_2.4' ]]; then
@@ -37,14 +37,14 @@ elif [[ $VER == '_2.3' ]]; then
   cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
   pip install setuptools==1.4.2 || exit 1 #################
   "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv.pyc" -p "python$VER" "$HOME/virtualenv/python$VER" #|| exit 1
-#else
-  #virtualenv -p "python$VER" --setuptools "$HOME/virtualenv/python$VER" || exit 1
+else
+  "virtualenv-$VER" -p "python$VER" "$HOME/virtualenv/python$VER" || exit 1
 fi
 source "$HOME/virtualenv/python$VER/bin/activate" #|| exit 1
 
 export TRAVIS_PYTHON_VERSION="$VER"
 
-if [[ $TRAVIS_PYTHON_VERSION == '_3.1' ]]; then
+if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   echo '*** Python - Updating Setuptools...'
   easy_install 'https://pypi.python.org/packages/source/s/setuptools/setuptools-0.7.3.tar.gz' > /dev/null 2>&1 || exit 1
   rm -rf "$HOME/virtualenv/python$VER/lib/python$VER/site-packages/distribute-"* || exit 1
