@@ -57,7 +57,7 @@ fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Updating Pip...'
-  easy_install pip==1.2.1 || exit 1  # Workaround for missing SSL
+  #easy_install pip==1.2.1 || exit 1  # Workaround for missing SSL
   #easy_install ssl || exit 1  # Needed by pip 1.3.1
   #pip install pip==1.3.1 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.4' ]]; then
