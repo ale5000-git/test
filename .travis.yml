@@ -12,7 +12,6 @@ env:
 
 matrix:
   include:
-    #- python: "pypy3-2.4.0"
     - env: Python=2.3
       language: generic
       addons:
@@ -33,7 +32,6 @@ matrix:
           packages:
             - python2.4
             - python2.4-dev
-            #- python-virtualenv
       before_install: . .travis/setup_virtualenv.sh
     - env: Python=2.5
       language: generic
@@ -44,6 +42,16 @@ matrix:
           packages:
             - python2.5
             - python2.5-dev
+      before_install: . .travis/setup_virtualenv.sh
+    - env: Python=3.1
+      language: generic
+      addons:
+        apt:
+          sources:
+            - sourceline: 'ppa:fkrull/deadsnakes'
+          packages:
+            - python3.1
+            - python3.1-dev
       before_install: . .travis/setup_virtualenv.sh
     #- python: '3.6'
 
