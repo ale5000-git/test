@@ -23,8 +23,8 @@ if [[ -n "$VENV_VER" ]]; then
 fi
 
 if [[ $VER == '2.3' ]]; then
-  echo '*** Python - Updating Setuptools...'
-  easy_install setuptools==1.4.2 #|| exit 1 #################
+  echo '.' #echo '*** Python - Updating Setuptools...'
+  #easy_install setuptools==1.4.2 #|| exit 1 #################
 fi
 
 echo '*** Python - Virtualenv setup in progress...'
