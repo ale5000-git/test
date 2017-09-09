@@ -25,6 +25,7 @@ fi
 if [[ $VER == '2.3' ]]; then
   echo '.' #echo '*** Python - Updating Setuptools...'
   #easy_install setuptools==1.4.2 #|| exit 1 #################
+  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
 fi
 
 echo '*** Python - Virtualenv setup in progress...'
@@ -42,7 +43,6 @@ export TRAVIS_PYTHON_VERSION="$VER"
 
 if [[ $VER == '2.3' ]]; then
   #easy_install setuptools==1.4.2 || exit 1 #################
-  cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
 fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.3' ]]; then
