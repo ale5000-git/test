@@ -30,7 +30,7 @@ fi
 
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '3.1' ]]; then
-  "virtualenv-$VER" -p "python$VER" --no-setuptools "$HOME/virtualenv/python$VER" || exit 1
+  "virtualenv-$VER" -p "python$VER" --no-setuptools --no-pip "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
   "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv.py" -p "python$VER" "$HOME/virtualenv/python$VER" ###|| exit 1
    echo '...'
@@ -56,7 +56,7 @@ echo '------------------'
 
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   echo '*** Python - Downgrading Pip...'
-  easy_install pip==1.5.6 || exit 1
+  #easy_install pip==1.5.6 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Downgrading Pip (Workaround for missing SSL in Python 2.5)...'
   easy_install pip==1.2.1 || exit 1
