@@ -22,11 +22,17 @@ if [[ -n "$VENV_VER" ]]; then
   cd .. || exit 1
 fi
 
+if [[ $VER == '2.3' ]]; then
+  echo '*** Python - Updating Setuptools...'
+  easy_install setuptools==1.4.2 #|| exit 1 #################
+fi
+
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '3.1' ]]; then
   "virtualenv-$VER" -p "python$VER" --no-setuptools "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
   "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv" -p "python$VER" "$HOME/virtualenv/python$VER" ###|| exit 1
+   echo '...'
 else
   "virtualenv-$VER" -p "python$VER" "$HOME/virtualenv/python$VER" || exit 1
 fi
