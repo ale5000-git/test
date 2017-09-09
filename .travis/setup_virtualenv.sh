@@ -26,7 +26,7 @@ echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '3.1' ]]; then
   "virtualenv-$VER" -p "python$VER" --no-setuptools "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
-  "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv" -p "python$VER" "$HOME/virtualenv/python$VER" #|| exit 1
+  "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv" -p "python$VER" "$HOME/virtualenv/python$VER" ###|| exit 1
 else
   "virtualenv-$VER" -p "python$VER" "$HOME/virtualenv/python$VER" || exit 1
 fi
@@ -39,6 +39,11 @@ export TRAVIS_PYTHON_VERSION="$VER"
   #cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
   #
 #fi
+
+if [[ $TRAVIS_PYTHON_VERSION == '2.3' ]]; then
+  echo '*** Python - Updating Setuptools...'
+  easy_install setuptools==1.4.2 #|| exit 1 #################
+fi
 
 if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Downgrading Pip (Workaround for missing SSL in Python 2.5)...'
