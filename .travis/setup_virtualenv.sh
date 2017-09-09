@@ -50,9 +50,20 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.3' ]]; then
   easy_install setuptools==1.4.2 #|| exit 1 #################
 fi
 
-if [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
+echo '------------------'
+pip -V
+echo '------------------'
+
+if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
+  echo '*** Python - Downgrading Pip...'
+  easy_install pip==6.0 || exit 1
+elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Downgrading Pip (Workaround for missing SSL in Python 2.5)...'
   easy_install pip==1.2.1 || exit 1
 fi
+
+echo '------------------'
+pip -V
+echo '------------------'
 
 echo '*** Done.'
