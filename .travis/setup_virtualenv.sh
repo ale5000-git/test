@@ -56,7 +56,7 @@ echo '------------------'
 
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   echo '*** Python - Downgrading Pip...'
-  easy_install pip==6.0 || exit 1
+  easy_install pip==1.5.6 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Downgrading Pip (Workaround for missing SSL in Python 2.5)...'
   easy_install pip==1.2.1 || exit 1
