@@ -5,7 +5,7 @@ echo "PATH: $PATH"
 echo '------------------'
 easy_install --version
 echo '------------------'
-pip -V
+pip --version
 echo '------------------'
 
 if [[ -n "$1" ]]; then VER="$1"; else VER="$Python"; fi
@@ -59,7 +59,7 @@ if [[ $TRAVIS_PYTHON_VERSION == '2.3' ]]; then
 fi
 
 echo '------------------'
-pip -V
+pip --version
 echo '------------------'
 
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
@@ -71,7 +71,9 @@ elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
 fi
 
 echo '------------------'
-pip -V
+easy_install --version
+echo '------------------'
+pip --version
 echo '------------------'
 
 echo '*** Done.'
