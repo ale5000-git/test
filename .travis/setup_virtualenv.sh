@@ -21,15 +21,22 @@ elif [[ $VER == '2.3' ]]; then
   ############### 1.3.2
 fi
 
+if [[ $VER == '3.1' ]]; then
+  echo '*** Python - Installing Pip...'
+  wget -q "https://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz" || exit 1
+  tar -xz -f "pip-1.5.6.tar.gz" || exit 1
+  cd "pip-1.5.6/" || exit 1
+  "python$VER" setup.py install --prefix="$HOME/.local" || exit 1
+  cd .. || exit 1
+fi
+
 if [[ -n "$VENV_VER" ]]; then
   echo '*** Python - Installing Virtualenv...'
   wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
   tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
   cd "virtualenv-${VENV_VER}/" || exit 1
-  if [[ $VER == '3.1' ]]; then
+  if [[ $VER == '3.1_' ]]; then
     rm -rf virtualenv_support/pip-*.whl || exit 1
-    wget -P 'virtualenv_support/' 'http://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz' || exit 1
-    patch 'virtualenv.egg-info/SOURCES.txt' "$TRAVIS_BUILD_DIR/.travis/patches/virtualenv-with-pip-1.5.6.patch"
   fi
   "python$VER" setup.py install --prefix="$HOME/.local" || exit 1
   cd .. || exit 1
