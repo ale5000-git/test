@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo '------------------'
+echo "PATH: $PATH"
+echo '------------------'
+easy_install --version
+echo '------------------'
+pip -V
+echo '------------------'
+
 if [[ -n "$1" ]]; then VER="$1"; else VER="$Python"; fi
 
 if [[ $VER == '3.1' ]]; then
