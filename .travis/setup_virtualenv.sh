@@ -22,7 +22,8 @@ elif [[ $VER == '2.3' ]]; then
 fi
 
 if [[ $VER == '3.1' ]]; then
-  echo '*** Python - Installing Pip...'
+  mkdir -p "$HOME/.local/lib/python$VER/site-packages"
+  echo '*** Python - Installing Setuptools...'
   wget -q "https://pypi.python.org/packages/source/s/setuptools/setuptools-18.2.tar.gz" || exit 1
   tar -xz -f "setuptools-18.2.tar.gz" || exit 1
   cd "setuptools-18.2/" || exit 1
