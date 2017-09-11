@@ -28,7 +28,8 @@ if [[ -n "$VENV_VER" ]]; then
   cd "virtualenv-${VENV_VER}/" || exit 1
   if [[ $VER == '3.1' ]]; then
     rm -rf virtualenv_support/pip-*.whl || exit 1
-    wget -P "virtualenv_support/" "http://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz" || exit 1
+    wget -P 'virtualenv_support/' 'http://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz' || exit 1
+    patch 'virtualenv.egg-info/SOURCES.txt' "$TRAVIS_BUILD_DIR/.travis/patches/virtualenv-with-pip-1.5.6.patch"
   fi
   "python$VER" setup.py install --prefix="$HOME/.local" || exit 1
   cd .. || exit 1
