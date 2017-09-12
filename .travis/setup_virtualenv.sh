@@ -27,15 +27,18 @@ if [[ $VER == '3.1' ]]; then
   wget -q "https://pypi.python.org/packages/source/s/setuptools/setuptools-18.2.tar.gz" || exit 1
   tar -xz -f "setuptools-18.2.tar.gz" || exit 1
   cd "setuptools-18.2/" || exit 1
-  "python$VER" setup.py install --prefix="$HOME/.local" || exit 1
+  "python$VER" setup.py --prefix="$HOME/.local" install || exit 1
   cd .. || exit 1
 
+  #echo '*** Python - Installing Pip...'
+  #wget -q "https://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz" || exit 1
+  #tar -xz -f "pip-1.5.6.tar.gz" || exit 1
+  #cd "pip-1.5.6/" || exit 1
+  #"python$VER" setup.py install --prefix="$HOME/.local" || exit 1
+  #cd .. || exit 1
+
   echo '*** Python - Installing Pip...'
-  wget -q "https://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz" || exit 1
-  tar -xz -f "pip-1.5.6.tar.gz" || exit 1
-  cd "pip-1.5.6/" || exit 1
-  "python$VER" setup.py install --prefix="$HOME/.local" || exit 1
-  cd .. || exit 1
+  "easy_install-$VER" --prefix="$HOME/.local" pip==1.5.6 || exit 1
 fi
 
 if [[ -n "$VENV_VER" ]]; then
