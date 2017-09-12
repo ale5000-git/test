@@ -46,9 +46,9 @@ if [[ -n "$VENV_VER" ]]; then
   wget -q "https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VENV_VER}.tar.gz" || exit 1
   tar -xz -f "virtualenv-${VENV_VER}.tar.gz" || exit 1
   cd "virtualenv-${VENV_VER}/" || exit 1
-  if [[ $VER == '3.1' ]]; then
+  if [[ $VER == '3.1_' ]]; then
     rm -rf virtualenv_support/setuptools-*.whl || exit 1
-    #rm -rf virtualenv_support/pip-*.whl || exit 1
+    rm -rf virtualenv_support/pip-*.whl || exit 1
   fi
   "python$VER" setup.py install --prefix="$HOME/.local" || exit 1
   cd .. || exit 1
