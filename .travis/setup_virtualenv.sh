@@ -38,7 +38,7 @@ if [[ $VER == '3.1' ]]; then
   #cd .. || exit 1
 
   echo '*** Python - Installing Pip...'
-  "easy_install-$VER" --prefix="$HOME/.local" pip==1.5.6 || exit 1
+  "easy_install-$VER" --user pip==1.5.6 || exit 1
 fi
 
 if [[ -n "$VENV_VER" ]]; then
@@ -89,7 +89,7 @@ echo '------------------'
 if [[ $TRAVIS_PYTHON_VERSION == '3.1' ]]; then
   echo '*** Python - Downgrading Pip...'
   #pip install pip==1.5.6 || exit 1
-  "easy_install-$VER" pip==1.5.6 || exit 1
+  "easy_install-$VER" --user pip==1.5.6 || exit 1
 elif [[ $TRAVIS_PYTHON_VERSION == '2.5' ]]; then
   echo '*** Python - Downgrading Pip (Workaround for missing SSL in Python 2.5)...'
   easy_install pip==1.2.1 || exit 1
