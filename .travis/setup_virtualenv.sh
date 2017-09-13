@@ -21,7 +21,7 @@ elif [[ $VER == '2.3' ]]; then
   ############### 1.3.2
 fi
 
-if [[ $VER == '3.1' ]]; then
+if [[ $VER == '3.1_' ]]; then
   mkdir -p "$HOME/.local/lib/python$VER/site-packages"
   echo '*** Python - Installing Setuptools...'
   wget -q "https://pypi.python.org/packages/source/s/setuptools/setuptools-18.2.tar.gz" || exit 1
@@ -55,14 +55,14 @@ if [[ -n "$VENV_VER" ]]; then
 fi
 
 if [[ $VER == '2.3' ]]; then
-  echo '.' #echo '*** Python - Updating Setuptools...'
+  #echo '.' #echo '*** Python - Updating Setuptools...'
   #easy_install setuptools==1.4.2 #|| exit 1 #################
   cp -pf "$TRAVIS_BUILD_DIR/.travis/lib/subprocess.py" "$HOME/.local/lib/python$VER/site-packages" || exit 1
 fi
 
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '3.1' ]]; then
-  "virtualenv-$VER" -p "python$VER" --no-setuptools "$HOME/virtualenv/python$VER" || exit 1
+  "virtualenv-$VER" -p "python$VER" --no-site-packages "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
   "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv.py" -p "python$VER" "$HOME/virtualenv/python$VER" ###|| exit 1
    echo '...'
