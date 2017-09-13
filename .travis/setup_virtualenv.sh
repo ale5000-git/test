@@ -62,12 +62,17 @@ fi
 
 echo '*** Python - Virtualenv setup in progress...'
 if [[ $VER == '3.1' ]]; then
-  "virtualenv-$VER" -p "python$VER" --no-site-packages "$HOME/virtualenv/python$VER" || exit 1
+  "virtualenv-$VER" -p "python$VER" --no-setuptools "$HOME/virtualenv/python$VER" || exit 1
 elif [[ $VER == '2.3' ]]; then
   "python$VER" "$HOME/.local/lib/python$VER/site-packages/virtualenv.py" -p "python$VER" "$HOME/virtualenv/python$VER" ###|| exit 1
    echo '...'
 else
   "virtualenv-$VER" -p "python$VER" "$HOME/virtualenv/python$VER" || exit 1
+fi
+if [[ $VER == '3.1' ]]; then
+  echo '*** Python - Downgrading Pip...'
+  #pip install pip==1.5.6 || exit 1
+  "easy_install-$VER" --user pip==1.5.6 || exit 1
 fi
 source "$HOME/virtualenv/python$VER/bin/activate" || exit 1
 
