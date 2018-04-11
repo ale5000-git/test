@@ -1,0 +1,6 @@
+buildscript {
+
+    dependencies {
+        compile 'com.topjohnwu.utils.ZipSigner:2.1'
+    }
+}
