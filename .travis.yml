@@ -51,7 +51,7 @@ matrix:
           packages:
             - python3.1
             - python3.1-dev
-      before_install: . .travis/setup_virtualenv.sh
+      #before_install: . .travis/setup_virtualenv.sh
     #- python: '3.6'
 
     #- env: Jython=latest
@@ -77,7 +77,7 @@ matrix:
 
 install:
   - echo "$TRAVIS_PYTHON_VERSION"
-  - .travis/setup_dependencies.sh
+  #- .travis/setup_dependencies.sh
 
 script:
   - echo "===SCRIPTS HERE==="
