@@ -68,9 +68,9 @@ matrix:
         #- unset JYTHON_HOME
         #- source "~/virtualenv/jython/bin/activate"
 
-    #- os: osx
-      #env: Python='default (macOS)'
-      #language: generic
+    - os: osx
+      env: Python='default (macOS)'
+      language: generic
   allow_failures:
     - os: osx
   fast_finish: true
@@ -81,6 +81,7 @@ install:
 
 script:
   - python -V
+  - uname
   #- .travis/run_codecov.sh 'pycompatlayer.py'
   - python pycompatlayer/pycompatlayer.py
   #
