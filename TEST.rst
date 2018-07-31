@@ -15,10 +15,9 @@ export PLAYSTORE_VERSION=auto
 ##################
 
 : '
-
 :MARKET:
-   Possible values: FakeStore, PlayStore
+  Possible values: FakeStore, PlayStore
 :PLAYSTORE_VERSION:
-   Possible values: auto, recent, legacy
+  Possible values: auto, recent, legacy
 
 '
